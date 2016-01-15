@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+<meta name="author" content="namitkewat" />
+<meta name="description" content="Python dict allows immutable types as a dictionary keys. From the python docs: The only types of values not acceptable as keys are values containing lists or dictionaries or other mutable types that are compared by value rather than by object identity, the reason being that the efficient implementation of ..." />
+<meta name="keywords" content="python, python dict, python hashable dict, python hashable list, python hashable set, python list, python set">
+<meta property="og:site_name" content="Namit Kewat's Blog"/>
+<meta property="og:title" content="Using list, set and dict as a key in python dict"/>
+<meta property="og:description" content="Python dict allows immutable types as a dictionary keys. From the python docs: The only types of values not acceptable as keys are values containing lists or dictionaries or other mutable types that are compared by value rather than by object identity, the reason being that the efficient implementation of ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000/drafts/using-list-set-and-dict-as-a-key-in-python-dict.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2013-04-15 17:44:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://localhost:8000/author/namitkewat.html">
+<meta property="article:section" content="General"/>
+<meta property="article:tag" content="python"/>
+<meta property="article:tag" content="python dict"/>
+<meta property="article:tag" content="python hashable dict"/>
+<meta property="article:tag" content="python hashable list"/>
+<meta property="article:tag" content="python hashable set"/>
+<meta property="article:tag" content="python list"/>
+<meta property="article:tag" content="python set"/>
+<meta property="og:image" content="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460">  <title>Namit Kewat's Blog &ndash; Using list, set and dict as a key in python dict</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460" alt="" title="">
+      </a>
+      <h1><a href="http://localhost:8000"></a></h1>
+      <p>Python, XBRL, Finance, MongoDB</p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About me</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/namitkewat" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/namitkewat" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1283171/namit" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/namitkewat" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="using-list-set-and-dict-as-a-key-in-python-dict">Using list, set and dict as a key in python dict</h1>
+    <p>Posted on Mon 15 April 2013 in <a href="http://localhost:8000/category/general.html">General</a></p>
+  </header>
+  <div>
+    <p>Python dict allows immutable types as a dictionary keys.</p>
+<p>From the python
+<a href="http://docs.python.org/2/reference/datamodel.html#the-standard-type-hierarchy" title="docs">docs</a>:</p>
+<p><em>The only types of values not acceptable as keys are values containing
+lists or dictionaries or other mutable types that are compared by value
+rather than by object identity, the reason being that the efficient
+implementation of dictionaries requires a key’s hash value to remain
+constant.</em></p>
+<p>it means if we try to set list, set or dict(which are mutable types) as
+a dict key.. . we will get error as:</p>
+<p>[sourcecode language="python" wraplines="false" collapse="false"]<br />
+In [1]: lst=[1,2,3,4]<br />
+In [2]: a={lst:'my name is namit'}  </p>
+<hr />
+<p>TypeError Traceback (most recent call last)<br />
+\&lt;ipython-input-2-fa474d946338> in \&lt;module>()<br />
+----> 1 a={lst:'my name is namit'}<br />
+TypeError: unhashable type: 'list'<br />
+[/sourcecode]</p>
+<p>So the solution is lets add a __hash__ magic method to make it
+immutable by providing a unique hash value.</p>
+<h3>Hashable python list</h3>
+<p>[sourcecode language="python" wraplines="false" collapse="false"]<br />
+class hashablelist(list):<br />
+insnum=0<br />
+def __init__(self, initial=[]):<br />
+super(hashablelist, self).__init__(initial)<br />
+self.hashval=hashablelist.insnum<br />
+hashablelist.insnum+=1<br />
+def __hash__(self):<br />
+return self.hashval</p>
+<p>lst=[1,2,3,4]<br />
+lst2=hashablelist(lst)<br />
+a={lst2:'my name is namit'}<br />
+print a<br />
+print a[lst2]<br />
+print lst2<br />
+print hashablelist.insnum<br />
+print lst2==lst<br />
+[/sourcecode]</p>
+<p>output of above will be:</p>
+<p>[sourcecode language="python" wraplines="false" collapse="false"]<br />
+{[1, 2, 3, 4]: 'my name is namit'}<br />
+my name is namit<br />
+[1, 2, 3, 4]<br />
+1<br />
+True<br />
+[/sourcecode]</p>
+<p>As you have seen above that by this we can use python lists as a dict
+keys; and this will be very helpful in many areas.</p>
+<p>Similarly for dict we can do it as:</p>
+<h3>Hashable python dict</h3>
+<p>[sourcecode language="python" wraplines="false" collapse="false"]<br />
+class hashabledict(dict):<br />
+insnum=0<br />
+def __init__(self,initial={}):<br />
+super(hashabledict,self).__init__(initial)<br />
+self.hashval=hashabledict.insnum<br />
+hashabledict.insnum+=1<br />
+def __hash__(self):<br />
+return self.hashval</p>
+<p>dct={'name':'namit'}<br />
+dct2=hashabledict(dct)<br />
+a={dct2:"voila"}<br />
+print a<br />
+print a[dct2]<br />
+print hashabledict.insnum<br />
+print dct2==dct<br />
+[/sourcecode]</p>
+<p>output of above will be:</p>
+<p>[sourcecode language="python" wraplines="false" collapse="false"]<br />
+{{'name': 'namit'}: 'voila'}<br />
+voila<br />
+1<br />
+True<br />
+[/sourcecode]</p>
+<p>and python sets as:</p>
+<h3>Hashable python set</h3>
+<p>[sourcecode language="python" wraplines="false" collapse="false"]<br />
+class hashableset(set):<br />
+insnum=0<br />
+def __init__(self,initial=set()):<br />
+##hashableset.__name__='set'<br />
+super(hashableset,self).__init__(initial)<br />
+self.hashval=hashableset.insnum<br />
+hashableset.insnum+=1<br />
+def __hash__(self):<br />
+return self.hashval</p>
+<p>cet2=hashableset(cet)<br />
+a={cet2:"my name is namit"}<br />
+print a<br />
+print a[cet2]<br />
+print cet==cet2<br />
+[/sourcecode]</p>
+<p>its output will be:</p>
+<p>[sourcecode language="python" wraplines="false" collapse="false"]<br />
+{set([2, 3, 4, 5]): 'my name is namit'}<br />
+my name is namit<br />
+True<br />
+[/sourcecode]</p>
+<p>For more you can download my ipython notebook from
+<a href="https://docs.google.com/file/d/0B_1SHAnqrt8TWHVuRmVydVlTQVU/edit?usp=sharing" title="here">here</a>.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://localhost:8000/tag/python.html">python</a>
+      <a href="http://localhost:8000/tag/python-dict.html">python dict</a>
+      <a href="http://localhost:8000/tag/python-hashable-dict.html">python hashable dict</a>
+      <a href="http://localhost:8000/tag/python-hashable-list.html">python hashable list</a>
+      <a href="http://localhost:8000/tag/python-hashable-set.html">python hashable set</a>
+      <a href="http://localhost:8000/tag/python-list.html">python list</a>
+      <a href="http://localhost:8000/tag/python-set.html">python set</a>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'namitkewatgithubio';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+      <p>&copy; Namit Kewat 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "Using list, set and dict as a key in python dict",
+  "headline": "Using list, set and dict as a key in python dict",
+  "datePublished": "2013-04-15 17:44:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "namitkewat",
+    "url": "http://localhost:8000/author/namitkewat.html"
+  },
+  "image": "https://avatars1.githubusercontent.com/u/1215126?v=3&s=460",
+  "url": "http://localhost:8000/drafts/using-list-set-and-dict-as-a-key-in-python-dict.html",
+  "description": "Python dict allows immutable types as a dictionary keys. From the python docs: The only types of values not acceptable as keys are values containing lists or dictionaries or other mutable types that are compared by value rather than by object identity, the reason being that the efficient implementation of ..."
+}
+</script></body>
+</html>

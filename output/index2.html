@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Namit Kewat" />
+  <meta name="description" content="Namit kewat's Thoughts and Writings" />
+<meta property="og:site_name" content="Namit Kewat's Blog"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Namit Kewat's Blog"/>
+<meta property="og:description" content="Namit kewat's Thoughts and Writings"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000"/>
+<meta property="og:image" content="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460">
+  <title>Namit Kewat's Blog</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460" alt="" title="">
+      </a>
+      <h1><a href="http://localhost:8000"></a></h1>
+      <p>Python, XBRL, Finance, MongoDB</p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About me</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/namitkewat" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/namitkewat" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1283171/namit" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/namitkewat" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/xbrl-financial-analytics-platform-alpha-1-0-first-release.html#xbrl-financial-analytics-platform-alpha-1-0-first-release">XBRL Financial Analytics Platform (Alpha 1.0): First release</a></h2>
+    <p>
+      Posted on Tue 25 December 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/financial-analytics.html">financial analytics</a>,      <a href="http://localhost:8000/tag/python.html">python</a>,      <a href="http://localhost:8000/tag/python-xbrl.html">python xbrl</a>,      <a href="http://localhost:8000/tag/xbrl.html">xbrl</a>,      <a href="http://localhost:8000/tag/xbrl-analytics.html">xbrl analytics</a>,      <a href="http://localhost:8000/tag/xbrl-financial-analytics.html">XBRL Financial Analytics</a>,      <a href="http://localhost:8000/tag/xbrlfinapp.html">xbrlfinapp</a>      &#8226; <a href="http://localhost:8000/xbrl-financial-analytics-platform-alpha-1-0-first-release.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>Hello friends,</p>
+<p>Today i am releasing first alpha release of my xbrl analytics platform.</p>
+<p>Its URL is: <a href="http://xbrlfinapp.pythonanywhere.com/">http://xbrlfinapp.pythonanywhere.com/</a></p>
+<p>Its a web application, targeting users whose XBRL is on SEC/or not on
+SEC/or not in public domain yet/or anyone who is interested in XBRL data
+and want to do the financial analytics.</p>
+<p>At present it is only working for US-GAAP TAXONOMY VERSIONS 09,11,12.</p>
+<p>Website's layout and design is simple; just upload valid zipped xbrl
+package and see the result on Homepage only. Upload file size has limit
+of 5MB. If you want to increase that limit then please show me that
+xbrl.</p>
+<p>Limited numbers of financial formulas(Key performance Indicators) have
+been included; because current website design and hosting type is
+restricting them. But these formulas are using data from XBRL package
+only; no access  to market information(like; share price).</p>
+<p>Well, all those improvements are in progress.</p>
+<p>This app represents final analysed data in form of table;similar how
+arelle is loading xbrl file. But its not. It is doing complex algorithm
+of data finding.</p>
+<p>For example; consider two cases as; 1st: " Correctly determining what
+total equity is if an SEC filer does not provide total equity" 2nd:
+"Correctly determining what total revenues is when the filer does not
+provide total revenues or when they use obscure concepts to express
+revenues"</p>
+<p>Lets take this challenge to my app; first download one xbrl filling from
+SEC from
+<a href="http://www.sec.gov/Archives/edgar/data/63754/000006375412000005/0000063754-12-000005-xbrl.zip" title="here">here</a> and
+upload it to xbrlfinapp application.</p>
+<p>case 1. Filler has not provided total equity
+concept("us-gaap_StockholdersEquity"); and my application has find out
+its three components, they
+are: RetainedEarningsAccumulatedDeficit,  CommonStockValue,  AccumulatedOtherComprehensiveIncomeLossNetOfTax.</p>
+<p>case 2. Filler has not provided 'total revenues'
+concept('us-gaap_Revenues'); and then in such case my application has
+find out its two components, they are; InterestExpense,  SalesRevenueNet</p>
+<p>Similarly filler has not provided 'Pre-Tax Income Loss'
+concept('us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest');<br />
+and then my application has find out its two components, they are;<span
+style="color:#333333;font-family:verdana, arial, sans-serif;"> </span>IncomeLossFromEquityMethodInvestments,  IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments.<br />
+Other cases like; filer has not provided 'Total Costs and Expenses'
+concept (us-gaap_CostsAndExpenses) and then my application has find out
+its five components
+as; InterestExpense, CostOfGoodsSold, OtherPostretirementBenefitExpense, SellingGeneralAndAdministrativeExpense, PensionExpense.</p>
+<p>but Current Assets(us-gaap_AssetsCurrent),Current
+liabilities(us-gaap_LiabilitiesCurrent), Total
+Assets(us-gaap_Assets) ,Operating Income
+Loss(us-gaap_OperatingIncomeLoss) are present; so they are not
+recalculated again.</p>
+<p>By this way; you can upload any xbrl package from SEC(under UGT version
+09,11,12).</p>
+<p><a href="http://namitkewat.files.wordpress.com/2012/12/screen-shot-2012-12-24-at-9-21-29-pm.png"><img alt="Screen shot 2012-12-24 at 9.21.29
+PM" src="http://namitkewat.files.wordpress.com/2012/12/screen-shot-2012-12-24-at-9-21-29-pm.png" title="Home Page" /></a>
+<a href="http://namitkewat.files.wordpress.com/2012/12/screen-shot-2012-12-24-at-9-22-10-pm.png"><img alt="Screen shot 2012-12-24 at 9.22.10
+PM" src="http://namitkewat.files.wordpress.com/2012/12/screen-shot-2012-12-24-at-9-22-10-pm.png" title="Home page after uploading and showing result" /></a></p>
+<p>Also there might be some bug or error in doing analysis; if you find
+them then please inform me at 'namitkewat@gmail.com'</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/super-charging-python-code-with-c-extensions-or-cython.html#super-charging-python-code-with-c-extensions-or-cython">Super-charging Python code with C-Extensions or Cython</a></h2>
+    <p>
+      Posted on Sun 16 December 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/cython.html">Cython</a>,      <a href="http://localhost:8000/tag/financial-analytics.html">financial analytics</a>,      <a href="http://localhost:8000/tag/python.html">python</a>,      <a href="http://localhost:8000/tag/xbrl.html">xbrl</a>      &#8226; <a href="http://localhost:8000/super-charging-python-code-with-c-extensions-or-cython.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>Regarding my previous
+<a href="http://namitkewat.wordpress.com/2012/11/20/large-scale-data-analytics-in-xbrl-using-python/" title="post">post</a>
+that was Financial Analytics in XBRL was in pure-python with little bit
+'C' touch (because of my base xml parsing lib is cElementTree). It was
+taking 20-21 mins to process 200 xbrl packages.</p>
+<p>But thats not the end; I have optimized it with
+<a href="http://cython.org/" title="Cython">Cython</a>. Its a C-extensions in python,
+giving multiple folds increase in the performance.<br />
+I have just converted my raw module to '.so' and then imported it as
+usual; and i found 25% reduction in time. Its now near 14-15min for the
+same data set of 200 xbrl fillings.</p>
+<p>See the screen-shot which i have just taken; </p>
+<p><a href="http://namitkewat.files.wordpress.com/2012/12/screen-shot-2012-12-16-at-1-12-53-am.png"><img alt="Image" src="http://namitkewat.files.wordpress.com/2012/12/screen-shot-2012-12-16-at-1-12-53-am.png?w=580" /></a><br />
+</p>
+<p>Here i have not implemented any type declaration or typed arguments; and
+yet i got 25% reduction in overall time. So you can imagine what will
+happen when i will implement those changes.<br />
+Anyway; 'C' rocks!!!!!</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/large-scale-data-analytics-in-xbrl-using-python.html#large-scale-data-analytics-in-xbrl-using-python">Large scale data analytics in XBRL using python</a></h2>
+    <p>
+      Posted on Tue 20 November 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/financial-ratios.html">financial ratios</a>,      <a href="http://localhost:8000/tag/python.html">python</a>,      <a href="http://localhost:8000/tag/python-xbrl.html">python xbrl</a>,      <a href="http://localhost:8000/tag/sec-fillings.html">sec fillings</a>,      <a href="http://localhost:8000/tag/xbrl-analytics.html">xbrl analytics</a>      &#8226; <a href="http://localhost:8000/large-scale-data-analytics-in-xbrl-using-python.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>Hello all,</p>
+<p>Just now i am completing my 8 months old experiment. It was to develop
+something with use of XBRL which can reduce the dependency on financial
+information which are processed by 3rd party.</p>
+<p>I mean that the current dependency on Yahoo finance/Bloomberg/Google
+Finance/9W search/i-metrix_edgar-online/.. . etc for the financial
+information should not be there.</p>
+<p>I am working as financial analyst doing XBRL tagging/verification/QC of
+financial information.</p>
+<p>I thought if we can tag this information then we can use it for
+analytics purpose.</p>
+<p>So lets build it. And now its almost done. I have just run my program on
+200 companies and it took only 20-25 min to analyze them.<br />
+You can see the output in the link given below. Its for 200 SEC's
+filling. (Not for entire quater; because it took me 3 hours to download
+them and just 20-25min to analyze them).</p>
+<p><a href="https://docs.google.com/open?id=0B_1SHAnqrt8TMHdxMG1oVmstNTA" title="Download 200 filling's data">Download 200 filling's
+analysed Data</a></p>
+<p>I am covering 21 main financial ratios; and around 20-21 financial
+facts.</p>
+<p>Ratios are also covered for dimension's case.<br />
+For example company "OPLINK COMMUNICATIONS INC (0001022225)"'s "Fixed
+turnover ratio" for "UnitedStatesMember" is "10.7756" while
+"ChinaMember" has "1.2279" for period of 2011-07-04/2012-07-01.</p>
+<p>You can see the how much detail can be pulled out if XBRL document is
+well formed.</p>
+<p>There was a time when it was taking more than 3 hours for 10% of current
+task. And at present it was just 20-25 mins on my Intel core2 duo/2GB
+RAM. Even then my instinct tells me that it can go down further.</p>
+<p>Well to do that; i am really thankful of "Python". It was great
+experience for me. Entire coding was done in python only.<br />
+I hope what python has given in field of Genome sequencing/Astronomy/
+and Physics will be repeated in finance as well.</p>
+<p>Scope of such program is in big data centers to small investors; like
+stock-exchange,financial information site like google-finance where
+authorities has to perform custom/personalized calculations on the
+financial data; also end user like you and me.</p>
+<p>If you have more formulas to include that can be easily calculated from
+XBRL then please mention it as a comment below;</p>
+<p>For more detailed study download this text file which contains the
+analysis of Google's and 3M's filling by my program: <a href="https://docs.google.com/open?id=0B_1SHAnqrt8TV0llSTFrelZmUk0" title="Google and 3M">Google and
+3M</a></p>
+<p>Any query regarding my development; then email me at
+"namitkewat@gmail.com"</p>
+<p>and any suggestion for current work??</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/xbrlmapper-facts-my-first-attempt-to-arelles-fact-list.html#xbrlmapper-facts-my-first-attempt-to-arelles-fact-list">xbrlMapper- "Facts": my first attempt to Arelle's Fact-List</a></h2>
+    <p>
+      Posted on Mon 17 September 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/arelle.html">arelle</a>,      <a href="http://localhost:8000/tag/python-xbrl.html">python xbrl</a>,      <a href="http://localhost:8000/tag/xbrl-instance-facts.html">xbrl instance facts</a>,      <a href="http://localhost:8000/tag/xbrlmapper.html">xbrlMapper</a>      &#8226; <a href="http://localhost:8000/xbrlmapper-facts-my-first-attempt-to-arelles-fact-list.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>I was just thinking that what i can do with my <a href="http://namitkewat.wordpress.com/2012/08/16/xbrlmapper-pythonic-library-for-xbrlxml-analytics/" title="xbrlMapper">xbrlMapper
+module</a>,
+so i thought lets try to make something  like arelle's fact-list(3rd and
+last image of this post; 'www.arelle.org").</p>
+<p>I have extended my present library; added new method "reportGen"; a
+methods with returns dicts of instance document's facts; and i really
+love dicts; specially after watching pycon-2010 talk on dict "<a href="http://blip.tv/pycon-us-videos-2009-2010-2011/pycon-2010-the-mighty-dictionary-55-3352147" title="The Mighty Dictionary">The
+Mighty
+Dictionary</a>".</p>
+<p>See the snaps i am uploading to this post. Though the speed of process
+is fast but i am not satisfied because if it now takes 2.5sec for one
+xbrl package then how much time it will take for 20,000 xbrl
+packages!!!!</p>
+<p>You know when i have started working on this , it has taken 71 seconds
+in first attempt(in evening of day one), it was like i am in stone-age
+ #\$@#\^@%#&amp;.<br />
+So i have decided to improve it, then 25 sec, 20 sec(7 PM.. .of day
+one) then 35 sec- 40 sec(11 PM.. day 1).. .lollzz.. that evening was
+very funny, all time it was moving around 30 seconds!!! and then
+suddenly 9.5 sec(at 00:30AM of day2), and then 4.5 sec(aaa...5:30AM day
+2), then finally its near 2-2.5 sec(..day 2..7:30AM.. then i left it
+because i have to go to my office), but my intuition is telling me that
+we can reduce it even further.</p>
+<p>[gallery link="file" columns="2"]</p>
+<p>Here in fist image; its snap-shot of Arelle's fact-list, in
+second  shows amount of python code i have to write to achieve this, and
+finally in last image... final output, its a sqlite db view in firefox
+plugin.</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/processing-files-larger-than-ram-in-python.html#processing-files-larger-than-ram-in-python">Processing files larger than RAM in python</a></h2>
+    <p>
+      Posted on Tue 11 September 2012 in <a href="http://localhost:8000/category/general.html">General</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/large-files.html">large files</a>,      <a href="http://localhost:8000/tag/mongo-db-log-reading.html">mongo-db log reading</a>,      <a href="http://localhost:8000/tag/python.html">python</a>,      <a href="http://localhost:8000/tag/reading-files-larger-than-ram-in-python.html">reading files larger than RAM in python</a>      &#8226; <a href="http://localhost:8000/processing-files-larger-than-ram-in-python.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>I got a log file of 131 GB from Mongo-DB that has been collected in last
+6 months. So I just thought lets calculate the number of lines.</p>
+<p>Here files size is greater than RAM, so after searching over internet; i
+got solution on http://stackoverflow.com.</p>
+<p>I have modified it a little bit! But work is
+done.<a href="http://namitkewat.files.wordpress.com/2012/09/131gb_logfile_code.jpg"><img alt="" src="http://namitkewat.files.wordpress.com/2012/09/131gb_logfile_code.jpg" title="python code for raeding 131GB logfile" /></a><a href="http://namitkewat.files.wordpress.com/2012/09/131gb_output.jpg"><img alt="" src="http://namitkewat.files.wordpress.com/2012/09/131gb_output.jpg" title="131GB_output" /></a></p>
+<p>It took around 75 min. and total number of lines was around 2.1 Billion.</p>
+  </div>
+</article>
+
+  <div class="pagination">
+    <a class="btn" href="http://localhost:8000/index3.html">
+      <i class="fa fa-angle-left"></i> Older Posts
+    </a>
+      <a class="btn float-right" href="http://localhost:8000/index.html">
+        Newer Posts <i class="fa fa-angle-right"></i>
+      </a>
+  </div>
+
+    <footer>
+      <p>&copy; Namit Kewat 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Namit Kewat's Blog ",
+  "url" : "http://localhost:8000",
+  "image": "https://avatars1.githubusercontent.com/u/1215126?v=3&s=460",
+  "description": "Namit kewat's Thoughts and Writings"
+}
+</script><script type="text/javascript">
+    var disqus_shortname = 'namitkewatgithubio';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

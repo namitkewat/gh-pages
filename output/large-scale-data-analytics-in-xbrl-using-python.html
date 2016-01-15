@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+<meta name="author" content="namitkewat" />
+<meta name="description" content="Hello all, Just now i am completing my 8 months old experiment. It was to develop something with use of XBRL which can reduce the dependency on financial information which are processed by 3rd party. I mean that the current dependency on Yahoo finance/Bloomberg/Google Finance/9W search/i-metrix_edgar-online ..." />
+<meta name="keywords" content="financial ratios, python, python xbrl, sec fillings, xbrl analytics">
+<meta property="og:site_name" content="Namit Kewat's Blog"/>
+<meta property="og:title" content="Large scale data analytics in XBRL using python"/>
+<meta property="og:description" content="Hello all, Just now i am completing my 8 months old experiment. It was to develop something with use of XBRL which can reduce the dependency on financial information which are processed by 3rd party. I mean that the current dependency on Yahoo finance/Bloomberg/Google Finance/9W search/i-metrix_edgar-online ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000/large-scale-data-analytics-in-xbrl-using-python.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2012-11-20 23:52:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://localhost:8000/author/namitkewat.html">
+<meta property="article:section" content="XBRL"/>
+<meta property="article:tag" content="financial ratios"/>
+<meta property="article:tag" content="python"/>
+<meta property="article:tag" content="python xbrl"/>
+<meta property="article:tag" content="sec fillings"/>
+<meta property="article:tag" content="xbrl analytics"/>
+<meta property="og:image" content="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460">  <title>Namit Kewat's Blog &ndash; Large scale data analytics in XBRL using python</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460" alt="" title="">
+      </a>
+      <h1><a href="http://localhost:8000"></a></h1>
+      <p>Python, XBRL, Finance, MongoDB</p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About me</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/namitkewat" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/namitkewat" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1283171/namit" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/namitkewat" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="large-scale-data-analytics-in-xbrl-using-python">Large scale data analytics in XBRL using python</h1>
+    <p>Posted on Tue 20 November 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a></p>
+  </header>
+  <div>
+    <p>Hello all,</p>
+<p>Just now i am completing my 8 months old experiment. It was to develop
+something with use of XBRL which can reduce the dependency on financial
+information which are processed by 3rd party.</p>
+<p>I mean that the current dependency on Yahoo finance/Bloomberg/Google
+Finance/9W search/i-metrix_edgar-online/.. . etc for the financial
+information should not be there.</p>
+<p>I am working as financial analyst doing XBRL tagging/verification/QC of
+financial information.</p>
+<p>I thought if we can tag this information then we can use it for
+analytics purpose.</p>
+<p>So lets build it. And now its almost done. I have just run my program on
+200 companies and it took only 20-25 min to analyze them.<br />
+You can see the output in the link given below. Its for 200 SEC's
+filling. (Not for entire quater; because it took me 3 hours to download
+them and just 20-25min to analyze them).</p>
+<p><a href="https://docs.google.com/open?id=0B_1SHAnqrt8TMHdxMG1oVmstNTA" title="Download 200 filling's data">Download 200 filling's
+analysed Data</a></p>
+<p>I am covering 21 main financial ratios; and around 20-21 financial
+facts.</p>
+<p>Ratios are also covered for dimension's case.<br />
+For example company "OPLINK COMMUNICATIONS INC (0001022225)"'s "Fixed
+turnover ratio" for "UnitedStatesMember" is "10.7756" while
+"ChinaMember" has "1.2279" for period of 2011-07-04/2012-07-01.</p>
+<p>You can see the how much detail can be pulled out if XBRL document is
+well formed.</p>
+<p>There was a time when it was taking more than 3 hours for 10% of current
+task. And at present it was just 20-25 mins on my Intel core2 duo/2GB
+RAM. Even then my instinct tells me that it can go down further.</p>
+<p>Well to do that; i am really thankful of "Python". It was great
+experience for me. Entire coding was done in python only.<br />
+I hope what python has given in field of Genome sequencing/Astronomy/
+and Physics will be repeated in finance as well.</p>
+<p>Scope of such program is in big data centers to small investors; like
+stock-exchange,financial information site like google-finance where
+authorities has to perform custom/personalized calculations on the
+financial data; also end user like you and me.</p>
+<p>If you have more formulas to include that can be easily calculated from
+XBRL then please mention it as a comment below;</p>
+<p>For more detailed study download this text file which contains the
+analysis of Google's and 3M's filling by my program: <a href="https://docs.google.com/open?id=0B_1SHAnqrt8TV0llSTFrelZmUk0" title="Google and 3M">Google and
+3M</a></p>
+<p>Any query regarding my development; then email me at
+"namitkewat@gmail.com"</p>
+<p>and any suggestion for current work??</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://localhost:8000/tag/financial-ratios.html">financial ratios</a>
+      <a href="http://localhost:8000/tag/python.html">python</a>
+      <a href="http://localhost:8000/tag/python-xbrl.html">python xbrl</a>
+      <a href="http://localhost:8000/tag/sec-fillings.html">sec fillings</a>
+      <a href="http://localhost:8000/tag/xbrl-analytics.html">xbrl analytics</a>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'namitkewatgithubio';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+      <p>&copy; Namit Kewat 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "Large scale data analytics in XBRL using python",
+  "headline": "Large scale data analytics in XBRL using python",
+  "datePublished": "2012-11-20 23:52:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "namitkewat",
+    "url": "http://localhost:8000/author/namitkewat.html"
+  },
+  "image": "https://avatars1.githubusercontent.com/u/1215126?v=3&s=460",
+  "url": "http://localhost:8000/large-scale-data-analytics-in-xbrl-using-python.html",
+  "description": "Hello all, Just now i am completing my 8 months old experiment. It was to develop something with use of XBRL which can reduce the dependency on financial information which are processed by 3rd party. I mean that the current dependency on Yahoo finance/Bloomberg/Google Finance/9W search/i-metrix_edgar-online ..."
+}
+</script></body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Namit Kewat" />
+  <meta name="description" content="Namit kewat's Thoughts and Writings" />
+<meta property="og:site_name" content="Namit Kewat's Blog"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Namit Kewat's Blog"/>
+<meta property="og:description" content="Namit kewat's Thoughts and Writings"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000"/>
+<meta property="og:image" content="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460">
+  <title>Namit Kewat's Blog &ndash; Category: General</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460" alt="" title="">
+      </a>
+      <h1><a href="http://localhost:8000"></a></h1>
+      <p>Python, XBRL, Finance, MongoDB</p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About me</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/namitkewat" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/namitkewat" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1283171/namit" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/namitkewat" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/solution-of-unicodeencodeerrorlatin-1-codec-cant-encode-character-while-working-with-mysqldb-and-python.html#solution-of-unicodeencodeerrorlatin-1-codec-cant-encode-character-while-working-with-mysqldb-and-python">Solution of "UnicodeEncodeError:'latin-1' codec can't encode character ..." while working with MySQLdb and Python.</a></h2>
+    <p>
+      Posted on Wed 28 March 2012 in <a href="http://localhost:8000/category/general.html">General</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/mysql.html">mysql</a>,      <a href="http://localhost:8000/tag/mysqldb.html">mysqldb</a>,      <a href="http://localhost:8000/tag/python.html">python</a>      &#8226; <a href="http://localhost:8000/solution-of-unicodeencodeerrorlatin-1-codec-cant-encode-character-while-working-with-mysqldb-and-python.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>I got the error of "UnicodeEncodeError:'latin-1' codec can't encode
+character ..." while i was inserting data into mysql with
+MySQLdb/Python.</p>
+<p>Below is the solution:</p>
+<p>import MySQLdb as litefire<br />
+conx = litefire.connect('127.0.0.1', 'root', '' , 'litefire2' );<br />
+conx.set_character_set('utf8')<br />
+conr=conx.cursor()<br />
+conr.execute('SET NAMES utf8 ...</p>
+      <a class="btn" href="http://localhost:8000/solution-of-unicodeencodeerrorlatin-1-codec-cant-encode-character-while-working-with-mysqldb-and-python.html#solution-of-unicodeencodeerrorlatin-1-codec-cant-encode-character-while-working-with-mysqldb-and-python">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/solution-of-could-not-find-any-x11-fonts-check-that-font-path-is-correct-working-with-r-statistics-and-python-rpy2.html#solution-of-could-not-find-any-x11-fonts-check-that-font-path-is-correct-working-with-r-statistics-and-python-rpy2">Solution of "Could not Find any X11 fonts, check that Font path is correct" while working with "R-statistics" and "Python-rpy2" on MAC LION 10.7.2</a></h2>
+    <p>
+      Posted on Mon 13 February 2012 in <a href="http://localhost:8000/category/general.html">General</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/bashrc.html">bashrc</a>,      <a href="http://localhost:8000/tag/could-not-find-any-x11-fonts.html">Could not Find any X11 fonts</a>,      <a href="http://localhost:8000/tag/python.html">python</a>,      <a href="http://localhost:8000/tag/r.html">R</a>,      <a href="http://localhost:8000/tag/r-foundation-for-statistical-computing.html">R Foundation for Statistical Computing</a>,      <a href="http://localhost:8000/tag/rpy.html">rpy</a>,      <a href="http://localhost:8000/tag/rpy2-and-python.html">rpy2 and python</a>,      <a href="http://localhost:8000/tag/x11.html">X11</a>,      <a href="http://localhost:8000/tag/x11-fonts.html">x11 fonts</a>      &#8226; <a href="http://localhost:8000/solution-of-could-not-find-any-x11-fonts-check-that-font-path-is-correct-working-with-r-statistics-and-python-rpy2.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>Such kind of error i got while i want to get some graphics using python
+and rpy on Mac LION 10.7.2.<br />
+After some google i got the solution, but that search was very tedious,
+so i decided to simplified the whole procedure. Below is the solution
+for that ...</p>
+      <a class="btn" href="http://localhost:8000/solution-of-could-not-find-any-x11-fonts-check-that-font-path-is-correct-working-with-r-statistics-and-python-rpy2.html#solution-of-could-not-find-any-x11-fonts-check-that-font-path-is-correct-working-with-r-statistics-and-python-rpy2">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/solution-of-cant-turn-on-web-sharing-on-mac-osx-lion.html#solution-of-cant-turn-on-web-sharing-on-mac-osx-lion">Solution of "Can't turn on Web sharing on Mac OSX LION!"</a></h2>
+    <p>
+      Posted on Sun 05 February 2012 in <a href="http://localhost:8000/category/general.html">General</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/apache.html">Apache</a>,      <a href="http://localhost:8000/tag/mac-os-x.html">mac os x</a>,      <a href="http://localhost:8000/tag/osx-lion.html">osx-lion</a>,      <a href="http://localhost:8000/tag/web-sharing.html">web sharing</a>      &#8226; <a href="http://localhost:8000/solution-of-cant-turn-on-web-sharing-on-mac-osx-lion.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>I have upgraded my macbook from snow leopard to lion. I have to test
+some python-cgi, for that i want to use native apache that i shipped
+with mac operating system. But when i click the checkbox to turn it on
+it displays a dash in the checkbox, changes from ...</p>
+      <a class="btn" href="http://localhost:8000/solution-of-cant-turn-on-web-sharing-on-mac-osx-lion.html#solution-of-cant-turn-on-web-sharing-on-mac-osx-lion">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/outlook-of-global-carbon-market.html#outlook-of-global-carbon-market">Outlook of Global Carbon Market</a></h2>
+    <p>
+      Posted on Sun 25 September 2011 in <a href="http://localhost:8000/category/general.html">General</a>
+      &#8226; <a href="http://localhost:8000/outlook-of-global-carbon-market.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>We can’t ignore this development. I believe that in distant future, it
+will be levied as a tax on the common people.</p>
+<p>But I believe this is not the proper way to address the main
+problem(Global warming). These are just quick-fixes, not long-term
+solution.</p>
+<p>Long-term solution requires change ...</p>
+      <a class="btn" href="http://localhost:8000/outlook-of-global-carbon-market.html#outlook-of-global-carbon-market">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/horrible-reality.html#horrible-reality">Horrible reality!</a></h2>
+    <p>
+      Posted on Thu 31 March 2011 in <a href="http://localhost:8000/category/general.html">General</a>
+      &#8226; <a href="http://localhost:8000/horrible-reality.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p><a href="http://namitkewat.files.wordpress.com/2011/03/think-about-it.jpeg"><img alt="" src="http://namitkewat.files.wordpress.com/2011/03/think-about-it.jpeg" title="Think about it" /></a></p>
+<p>I am speechless!!!<br />
+wake up please,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,</p>
+      <a class="btn" href="http://localhost:8000/horrible-reality.html#horrible-reality">Continue reading</a>
+  </div>
+</article>
+
+  <div class="pagination">
+    <a class="btn" href="http://localhost:8000/category/general3.html">
+      <i class="fa fa-angle-left"></i> Older Posts
+    </a>
+      <a class="btn float-right" href="http://localhost:8000/category/general.html">
+        Newer Posts <i class="fa fa-angle-right"></i>
+      </a>
+  </div>
+
+    <footer>
+      <p>&copy; Namit Kewat 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Namit Kewat's Blog ",
+  "url" : "http://localhost:8000",
+  "image": "https://avatars1.githubusercontent.com/u/1215126?v=3&s=460",
+  "description": "Namit kewat's Thoughts and Writings"
+}
+</script><script type="text/javascript">
+    var disqus_shortname = 'namitkewatgithubio';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

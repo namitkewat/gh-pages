@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Namit Kewat" />
+  <meta name="description" content="Namit kewat's Thoughts and Writings" />
+<meta property="og:site_name" content="Namit Kewat's Blog"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Namit Kewat's Blog"/>
+<meta property="og:description" content="Namit kewat's Thoughts and Writings"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000"/>
+<meta property="og:image" content="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460">
+  <title>Namit Kewat's Blog</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460" alt="" title="">
+      </a>
+      <h1><a href="http://localhost:8000"></a></h1>
+      <p>Python, XBRL, Finance, MongoDB</p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About me</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/namitkewat" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/namitkewat" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1283171/namit" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/namitkewat" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/working-with-pypmpython-in-internet-proxy-on-windows.html#working-with-pypmpython-in-internet-proxy-on-windows">working with pypm/python in internet proxy on windows</a></h2>
+    <p>
+      Posted on Wed 11 April 2012 in <a href="http://localhost:8000/category/general.html">General</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/easy_install.html">easy_install</a>,      <a href="http://localhost:8000/tag/internet-proxy.html">internet proxy</a>,      <a href="http://localhost:8000/tag/pypm.html">pypm</a>,      <a href="http://localhost:8000/tag/python.html">python</a>,      <a href="http://localhost:8000/tag/windows.html">windows</a>      &#8226; <a href="http://localhost:8000/working-with-pypmpython-in-internet-proxy-on-windows.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>Well guys,</p>
+<p>Currently I am working on PC in my company's development center.Its an
+Windows XP. This place is highly secured, you need to get all proxy
+setting for your internet use.</p>
+<p>I want to install few python packages with pypm, but in DOS prompt it is
+not allowing me to do that.</p>
+<p>So after little bit of google, i got the solution as below:</p>
+<p>-<strong>set HTTP_PROXY=domain\username:password@myproxy:myproxyport</strong></p>
+<p><strong>example: set
+http_proxy=IND\namit.kewat:xl123456@192.168.180.150:8880</strong></p>
+<p>after that.. .pypm works fine!!!</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/solution-of-unicodeencodeerrorlatin-1-codec-cant-encode-character-while-working-with-mysqldb-and-python.html#solution-of-unicodeencodeerrorlatin-1-codec-cant-encode-character-while-working-with-mysqldb-and-python">Solution of "UnicodeEncodeError:'latin-1' codec can't encode character ..." while working with MySQLdb and Python.</a></h2>
+    <p>
+      Posted on Wed 28 March 2012 in <a href="http://localhost:8000/category/general.html">General</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/mysql.html">mysql</a>,      <a href="http://localhost:8000/tag/mysqldb.html">mysqldb</a>,      <a href="http://localhost:8000/tag/python.html">python</a>      &#8226; <a href="http://localhost:8000/solution-of-unicodeencodeerrorlatin-1-codec-cant-encode-character-while-working-with-mysqldb-and-python.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>I got the error of "UnicodeEncodeError:'latin-1' codec can't encode
+character ..." while i was inserting data into mysql with
+MySQLdb/Python.</p>
+<p>Below is the solution:</p>
+<p>import MySQLdb as litefire<br />
+conx = litefire.connect('127.0.0.1', 'root', '' , 'litefire2' );<br />
+conx.set_character_set('utf8')<br />
+conr=conx.cursor()<br />
+conr.execute('SET NAMES utf8;')<br />
+conr.execute('SET CHARACTER SET utf8;')<br />
+conr.execute('SET character_set_connection=utf8;')</p>
+<p>Enjoy,</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/xbrl-extension-boost-pack.html#xbrl-extension-boost-pack">XBRL Extension Boost pack (for SEC fillings)</a></h2>
+    <p>
+      Posted on Thu 22 March 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a>
+      &#8226; <a href="http://localhost:8000/xbrl-extension-boost-pack.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>I think the title of this post is correct in the sense that the amount
+of extensions that have been created in XBRL fillings on
+<a href="http://www.sec.gov" title="sec.gov">sec.gov</a>.</p>
+<p>Python/ElementTree has helped me in doing so!</p>
+<p>I have extracted all extensions that are gone in XBRL fillings of during
+that last quater of 2011. Output has surprised me. It is <strong>1092354</strong>.
+There are 1092354 line of labels(with their extensions) during last
+three months of 2011 were filling in XBRL on SEC.</p>
+<p>SEC has given around 16000 elements and we have created so much
+extensions.</p>
+<p>Well i am putting my output in excel as a link. They are in 8 parts; 1-1
+for 10th and 12th month and 6 part for 11th month of 2011. Below is the
+link for that.</p>
+<p><a href="http://dl.dropbox.com/u/2409700/extenstion_database/out_10.xlsx">http://dl.dropbox.com/u/2409700/extenstion_database/out_10.xlsx</a><br />
+<a href="http://dl.dropbox.com/u/2409700/extenstion_database/out_11_1.xlsx">http://dl.dropbox.com/u/2409700/extenstion_database/out_11_1.xlsx</a><br />
+<a href="http://dl.dropbox.com/u/2409700/extenstion_database/out_11_2.xlsx">http://dl.dropbox.com/u/2409700/extenstion_database/out_11_2.xlsx</a><br />
+<a href="http://dl.dropbox.com/u/2409700/extenstion_database/out_11_3.xlsx">http://dl.dropbox.com/u/2409700/extenstion_database/out_11_3.xlsx</a><br />
+<a href="http://dl.dropbox.com/u/2409700/extenstion_database/out_11_4.xlsx">http://dl.dropbox.com/u/2409700/extenstion_database/out_11_4.xlsx</a><br />
+<a href="http://dl.dropbox.com/u/2409700/extenstion_database/out_11_5.xlsx">http://dl.dropbox.com/u/2409700/extenstion_database/out_11_5.xlsx</a><br />
+<a href="http://dl.dropbox.com/u/2409700/extenstion_database/out_11_6.xlsx">http://dl.dropbox.com/u/2409700/extenstion_database/out_11_6.xlsx</a><br />
+<a href="http://dl.dropbox.com/u/2409700/extenstion_database/out_12.xlsx">http://dl.dropbox.com/u/2409700/extenstion_database/out_12.xlsx</a></p>
+<p>In the excel there is a column as "sumtax", it gives information about
+taxonomy version; 2 for UGT-2011 and 1 for UGT-2009 and 0 for mutual
+funds ... .</p>
+<p>Anyway, such amount of extensions will create XBRL mess. We can't
+compare our financials when there is so much difference in xml tags of
+valuable data.</p>
+<p>I think one solution will be, lets put this data into public domain,
+just like search taxonomy feature of
+<a href="http://viewer.xbrl.us/yeti2/resources/yeti-gwt/Yeti.jsp#tax~%28id~231*v~278%29!net~%28a~3700*l~812%29!lang~%28code~en-us%29!rg~%28rg~2*p~1%29" title="Yeti">xbrl.us</a>
+and tell fillers to use from this database when they require extra
+extensions.</p>
+<p>Solve it like a distrubuted way.(like wiki has grown)</p>
+<p>Also along with it, <strong>chartered accountant from all over the USA/abroad
+should invest their little time online for finding elements which has
+similar meaning</strong>. Because we are focusing on single and last quarter,
+it will be sufficient for us.</p>
+<p>Anyway, lets see, may be FASB/SEC will prohibited the extensions or
+public domain will find their way to standardize extensions(based on the
+concept of <a href="http://en.wikipedia.org/wiki/Crowdsourcing" title="Crowd sourcing">crowd
+sourcing</a>).</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/my-first-aiartificial-game-of-creditdebit.html#my-first-aiartificial-game-of-creditdebit">My first AI game of Credit/Debit</a></h2>
+    <p>
+      Posted on Wed 21 March 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/ai.html">AI</a>,      <a href="http://localhost:8000/tag/creditdebit.html">credit/debit</a>,      <a href="http://localhost:8000/tag/nltk.html">NLTK</a>,      <a href="http://localhost:8000/tag/python.html">python</a>,      <a href="http://localhost:8000/tag/xbrl.html">xbrl</a>      &#8226; <a href="http://localhost:8000/my-first-aiartificial-game-of-creditdebit.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>I have created a game in python using <a href="http://www.nltk.org/" title="Natural Language Tookit">Natural language
+Toolkit</a> which is a
+library in python for processing of language.</p>
+<p>I have used US GAAP 2011 taxonomy as base database, which later will be
+utilized to understand the meaning of input.
+<a href="www.sqlite.org" title="SQLite">SQLite</a> will support me in doing that.</p>
+<p>Results are pretty satisfactory, with 55% accuracy tested on 7500 XBRL
+monetary type elements.</p>
+<p>Anyway, it was for fun only.. .</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/solution-of-could-not-find-any-x11-fonts-check-that-font-path-is-correct-working-with-r-statistics-and-python-rpy2.html#solution-of-could-not-find-any-x11-fonts-check-that-font-path-is-correct-working-with-r-statistics-and-python-rpy2">Solution of "Could not Find any X11 fonts, check that Font path is correct" while working with "R-statistics" and "Python-rpy2" on MAC LION 10.7.2</a></h2>
+    <p>
+      Posted on Mon 13 February 2012 in <a href="http://localhost:8000/category/general.html">General</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/bashrc.html">bashrc</a>,      <a href="http://localhost:8000/tag/could-not-find-any-x11-fonts.html">Could not Find any X11 fonts</a>,      <a href="http://localhost:8000/tag/python.html">python</a>,      <a href="http://localhost:8000/tag/r.html">R</a>,      <a href="http://localhost:8000/tag/r-foundation-for-statistical-computing.html">R Foundation for Statistical Computing</a>,      <a href="http://localhost:8000/tag/rpy.html">rpy</a>,      <a href="http://localhost:8000/tag/rpy2-and-python.html">rpy2 and python</a>,      <a href="http://localhost:8000/tag/x11.html">X11</a>,      <a href="http://localhost:8000/tag/x11-fonts.html">x11 fonts</a>      &#8226; <a href="http://localhost:8000/solution-of-could-not-find-any-x11-fonts-check-that-font-path-is-correct-working-with-r-statistics-and-python-rpy2.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>Such kind of error i got while i want to get some graphics using python
+and rpy on Mac LION 10.7.2.<br />
+After some google i got the solution, but that search was very tedious,
+so i decided to simplified the whole procedure. Below is the solution
+for that.</p>
+<p>First check where our problem is located. When you give command like
+'xeyes" in your terminal, it open eyes, that means X11 is there.<br />
+Now in your "R" GUI or from your terminal interface give sample task,
+it can be "plot(1,1)".<br />
+Here i can see the same error which i am getting in python
+intrepretor,<br />
+its<br />
+"Could not find any X11 fonts<br />
+check that Font path is correct"</p>
+<p>Then in your R, given another command like "sessionInfo()".<br />
+You can see both of above command in pic given below.</p>
+<p><a href="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-7-41-04-pm.png"><img alt="" src="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-7-41-04-pm.png" title="Screen Shot 2012-02-13 at 7.41.04 PM" /></a></p>
+<p>In "sessionInfo()" you can see that in "Local" fonts are mentioned but
+this list in incomplete.</p>
+<p>So here we got the troubled part and by fixing this point our problem is
+solved.</p>
+<p>For that open "etc/bashrc" and add the following lines which is
+mentioned below the line "Setting for the new UTF-8 terminal support in
+Lion" as in pic below.<br />
+These two lines are:<br />
+export LC_CTYPE=en_US.UTF-8<br />
+export LC_ALL=en_US.UTF-8</p>
+<p>Save the changes, and restart it!</p>
+<p><a href="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-7-42-05-pm.png"><img alt="" src="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-7-42-05-pm.png" title="Screen Shot 2012-02-13 at 7.42.05 PM" /></a></p>
+<p><a href="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-7-41-45-pm.png"><img alt="" src="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-7-41-45-pm.png" title="Screen Shot 2012-02-13 at 7.41.45 PM" /></a></p>
+<p>After new logging, give "sessionInfo()" command in your R, You can see
+in missing fonts are there, and for simple ploting of "plot(1,1)" gives
+desired output.</p>
+<p><a href="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-8-51-51-pm.png"><img alt="" src="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-8-51-51-pm.png" title="Screen Shot 2012-02-13 at 8.51.51 PM" /></a></p>
+  </div>
+</article>
+
+  <div class="pagination">
+    <a class="btn" href="http://localhost:8000/index5.html">
+      <i class="fa fa-angle-left"></i> Older Posts
+    </a>
+      <a class="btn float-right" href="http://localhost:8000/index3.html">
+        Newer Posts <i class="fa fa-angle-right"></i>
+      </a>
+  </div>
+
+    <footer>
+      <p>&copy; Namit Kewat 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Namit Kewat's Blog ",
+  "url" : "http://localhost:8000",
+  "image": "https://avatars1.githubusercontent.com/u/1215126?v=3&s=460",
+  "description": "Namit kewat's Thoughts and Writings"
+}
+</script><script type="text/javascript">
+    var disqus_shortname = 'namitkewatgithubio';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

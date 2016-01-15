@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+<meta name="author" content="namitkewat" />
+<meta name="description" content="Hello friends, Today i am releasing first alpha release of my xbrl analytics platform. Its URL is: http://xbrlfinapp.pythonanywhere.com/ Its a web application, targeting users whose XBRL is on SEC/or not on SEC/or not in public domain yet/or anyone who is interested in XBRL data ..." />
+<meta name="keywords" content="financial analytics, python, python xbrl, xbrl, xbrl analytics, XBRL Financial Analytics, xbrlfinapp">
+<meta property="og:site_name" content="Namit Kewat's Blog"/>
+<meta property="og:title" content="XBRL Financial Analytics Platform (Alpha 1.0): First release"/>
+<meta property="og:description" content="Hello friends, Today i am releasing first alpha release of my xbrl analytics platform. Its URL is: http://xbrlfinapp.pythonanywhere.com/ Its a web application, targeting users whose XBRL is on SEC/or not on SEC/or not in public domain yet/or anyone who is interested in XBRL data ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000/xbrl-financial-analytics-platform-alpha-1-0-first-release.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2012-12-25 19:19:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://localhost:8000/author/namitkewat.html">
+<meta property="article:section" content="XBRL"/>
+<meta property="article:tag" content="financial analytics"/>
+<meta property="article:tag" content="python"/>
+<meta property="article:tag" content="python xbrl"/>
+<meta property="article:tag" content="xbrl"/>
+<meta property="article:tag" content="xbrl analytics"/>
+<meta property="article:tag" content="XBRL Financial Analytics"/>
+<meta property="article:tag" content="xbrlfinapp"/>
+<meta property="og:image" content="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460">  <title>Namit Kewat's Blog &ndash; XBRL Financial Analytics Platform (Alpha 1.0): First release</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460" alt="" title="">
+      </a>
+      <h1><a href="http://localhost:8000"></a></h1>
+      <p>Python, XBRL, Finance, MongoDB</p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About me</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/namitkewat" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/namitkewat" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1283171/namit" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/namitkewat" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="xbrl-financial-analytics-platform-alpha-1-0-first-release">XBRL Financial Analytics Platform (Alpha 1.0): First release</h1>
+    <p>Posted on Tue 25 December 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a></p>
+  </header>
+  <div>
+    <p>Hello friends,</p>
+<p>Today i am releasing first alpha release of my xbrl analytics platform.</p>
+<p>Its URL is: <a href="http://xbrlfinapp.pythonanywhere.com/">http://xbrlfinapp.pythonanywhere.com/</a></p>
+<p>Its a web application, targeting users whose XBRL is on SEC/or not on
+SEC/or not in public domain yet/or anyone who is interested in XBRL data
+and want to do the financial analytics.</p>
+<p>At present it is only working for US-GAAP TAXONOMY VERSIONS 09,11,12.</p>
+<p>Website's layout and design is simple; just upload valid zipped xbrl
+package and see the result on Homepage only. Upload file size has limit
+of 5MB. If you want to increase that limit then please show me that
+xbrl.</p>
+<p>Limited numbers of financial formulas(Key performance Indicators) have
+been included; because current website design and hosting type is
+restricting them. But these formulas are using data from XBRL package
+only; no access  to market information(like; share price).</p>
+<p>Well, all those improvements are in progress.</p>
+<p>This app represents final analysed data in form of table;similar how
+arelle is loading xbrl file. But its not. It is doing complex algorithm
+of data finding.</p>
+<p>For example; consider two cases as; 1st: " Correctly determining what
+total equity is if an SEC filer does not provide total equity" 2nd:
+"Correctly determining what total revenues is when the filer does not
+provide total revenues or when they use obscure concepts to express
+revenues"</p>
+<p>Lets take this challenge to my app; first download one xbrl filling from
+SEC from
+<a href="http://www.sec.gov/Archives/edgar/data/63754/000006375412000005/0000063754-12-000005-xbrl.zip" title="here">here</a> and
+upload it to xbrlfinapp application.</p>
+<p>case 1. Filler has not provided total equity
+concept("us-gaap_StockholdersEquity"); and my application has find out
+its three components, they
+are: RetainedEarningsAccumulatedDeficit,  CommonStockValue,  AccumulatedOtherComprehensiveIncomeLossNetOfTax.</p>
+<p>case 2. Filler has not provided 'total revenues'
+concept('us-gaap_Revenues'); and then in such case my application has
+find out its two components, they are; InterestExpense,  SalesRevenueNet</p>
+<p>Similarly filler has not provided 'Pre-Tax Income Loss'
+concept('us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest');<br />
+and then my application has find out its two components, they are;<span
+style="color:#333333;font-family:verdana, arial, sans-serif;"> </span>IncomeLossFromEquityMethodInvestments,  IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments.<br />
+Other cases like; filer has not provided 'Total Costs and Expenses'
+concept (us-gaap_CostsAndExpenses) and then my application has find out
+its five components
+as; InterestExpense, CostOfGoodsSold, OtherPostretirementBenefitExpense, SellingGeneralAndAdministrativeExpense, PensionExpense.</p>
+<p>but Current Assets(us-gaap_AssetsCurrent),Current
+liabilities(us-gaap_LiabilitiesCurrent), Total
+Assets(us-gaap_Assets) ,Operating Income
+Loss(us-gaap_OperatingIncomeLoss) are present; so they are not
+recalculated again.</p>
+<p>By this way; you can upload any xbrl package from SEC(under UGT version
+09,11,12).</p>
+<p><a href="http://namitkewat.files.wordpress.com/2012/12/screen-shot-2012-12-24-at-9-21-29-pm.png"><img alt="Screen shot 2012-12-24 at 9.21.29
+PM" src="http://namitkewat.files.wordpress.com/2012/12/screen-shot-2012-12-24-at-9-21-29-pm.png" title="Home Page" /></a>
+<a href="http://namitkewat.files.wordpress.com/2012/12/screen-shot-2012-12-24-at-9-22-10-pm.png"><img alt="Screen shot 2012-12-24 at 9.22.10
+PM" src="http://namitkewat.files.wordpress.com/2012/12/screen-shot-2012-12-24-at-9-22-10-pm.png" title="Home page after uploading and showing result" /></a></p>
+<p>Also there might be some bug or error in doing analysis; if you find
+them then please inform me at 'namitkewat@gmail.com'</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://localhost:8000/tag/financial-analytics.html">financial analytics</a>
+      <a href="http://localhost:8000/tag/python.html">python</a>
+      <a href="http://localhost:8000/tag/python-xbrl.html">python xbrl</a>
+      <a href="http://localhost:8000/tag/xbrl.html">xbrl</a>
+      <a href="http://localhost:8000/tag/xbrl-analytics.html">xbrl analytics</a>
+      <a href="http://localhost:8000/tag/xbrl-financial-analytics.html">XBRL Financial Analytics</a>
+      <a href="http://localhost:8000/tag/xbrlfinapp.html">xbrlfinapp</a>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'namitkewatgithubio';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+      <p>&copy; Namit Kewat 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "XBRL Financial Analytics Platform (Alpha 1.0): First release",
+  "headline": "XBRL Financial Analytics Platform (Alpha 1.0): First release",
+  "datePublished": "2012-12-25 19:19:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "namitkewat",
+    "url": "http://localhost:8000/author/namitkewat.html"
+  },
+  "image": "https://avatars1.githubusercontent.com/u/1215126?v=3&s=460",
+  "url": "http://localhost:8000/xbrl-financial-analytics-platform-alpha-1-0-first-release.html",
+  "description": "Hello friends, Today i am releasing first alpha release of my xbrl analytics platform. Its URL is: http://xbrlfinapp.pythonanywhere.com/ Its a web application, targeting users whose XBRL is on SEC/or not on SEC/or not in public domain yet/or anyone who is interested in XBRL data ..."
+}
+</script></body>
+</html>

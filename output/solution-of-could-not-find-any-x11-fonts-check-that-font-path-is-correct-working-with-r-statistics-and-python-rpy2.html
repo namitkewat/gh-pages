@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+<meta name="author" content="namitkewat" />
+<meta name="description" content="Such kind of error i got while i want to get some graphics using python and rpy on Mac LION 10.7.2. After some google i got the solution, but that search was very tedious, so i decided to simplified the whole procedure. Below is the solution for that ..." />
+<meta name="keywords" content="bashrc, Could not Find any X11 fonts, python, R, R Foundation for Statistical Computing, rpy, rpy2 and python, X11, x11 fonts">
+<meta property="og:site_name" content="Namit Kewat's Blog"/>
+<meta property="og:title" content="Solution of "Could not Find any X11 fonts, check that Font path is correct" while working with "R-statistics" and "Python-rpy2" on MAC LION 10.7.2"/>
+<meta property="og:description" content="Such kind of error i got while i want to get some graphics using python and rpy on Mac LION 10.7.2. After some google i got the solution, but that search was very tedious, so i decided to simplified the whole procedure. Below is the solution for that ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000/solution-of-could-not-find-any-x11-fonts-check-that-font-path-is-correct-working-with-r-statistics-and-python-rpy2.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2012-02-13 21:00:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://localhost:8000/author/namitkewat.html">
+<meta property="article:section" content="General"/>
+<meta property="article:tag" content="bashrc"/>
+<meta property="article:tag" content="Could not Find any X11 fonts"/>
+<meta property="article:tag" content="python"/>
+<meta property="article:tag" content="R"/>
+<meta property="article:tag" content="R Foundation for Statistical Computing"/>
+<meta property="article:tag" content="rpy"/>
+<meta property="article:tag" content="rpy2 and python"/>
+<meta property="article:tag" content="X11"/>
+<meta property="article:tag" content="x11 fonts"/>
+<meta property="og:image" content="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460">  <title>Namit Kewat's Blog &ndash; Solution of "Could not Find any X11 fonts, check that Font path is correct" while working with "R-statistics" and "Python-rpy2" on MAC LION 10.7.2</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460" alt="" title="">
+      </a>
+      <h1><a href="http://localhost:8000"></a></h1>
+      <p>Python, XBRL, Finance, MongoDB</p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About me</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/namitkewat" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/namitkewat" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1283171/namit" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/namitkewat" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="solution-of-could-not-find-any-x11-fonts-check-that-font-path-is-correct-working-with-r-statistics-and-python-rpy2">Solution of "Could not Find any X11 fonts, check that Font path is correct" while working with "R-statistics" and "Python-rpy2" on MAC LION 10.7.2</h1>
+    <p>Posted on Mon 13 February 2012 in <a href="http://localhost:8000/category/general.html">General</a></p>
+  </header>
+  <div>
+    <p>Such kind of error i got while i want to get some graphics using python
+and rpy on Mac LION 10.7.2.<br />
+After some google i got the solution, but that search was very tedious,
+so i decided to simplified the whole procedure. Below is the solution
+for that.</p>
+<p>First check where our problem is located. When you give command like
+'xeyes" in your terminal, it open eyes, that means X11 is there.<br />
+Now in your "R" GUI or from your terminal interface give sample task,
+it can be "plot(1,1)".<br />
+Here i can see the same error which i am getting in python
+intrepretor,<br />
+its<br />
+"Could not find any X11 fonts<br />
+check that Font path is correct"</p>
+<p>Then in your R, given another command like "sessionInfo()".<br />
+You can see both of above command in pic given below.</p>
+<p><a href="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-7-41-04-pm.png"><img alt="" src="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-7-41-04-pm.png" title="Screen Shot 2012-02-13 at 7.41.04 PM" /></a></p>
+<p>In "sessionInfo()" you can see that in "Local" fonts are mentioned but
+this list in incomplete.</p>
+<p>So here we got the troubled part and by fixing this point our problem is
+solved.</p>
+<p>For that open "etc/bashrc" and add the following lines which is
+mentioned below the line "Setting for the new UTF-8 terminal support in
+Lion" as in pic below.<br />
+These two lines are:<br />
+export LC_CTYPE=en_US.UTF-8<br />
+export LC_ALL=en_US.UTF-8</p>
+<p>Save the changes, and restart it!</p>
+<p><a href="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-7-42-05-pm.png"><img alt="" src="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-7-42-05-pm.png" title="Screen Shot 2012-02-13 at 7.42.05 PM" /></a></p>
+<p><a href="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-7-41-45-pm.png"><img alt="" src="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-7-41-45-pm.png" title="Screen Shot 2012-02-13 at 7.41.45 PM" /></a></p>
+<p>After new logging, give "sessionInfo()" command in your R, You can see
+in missing fonts are there, and for simple ploting of "plot(1,1)" gives
+desired output.</p>
+<p><a href="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-8-51-51-pm.png"><img alt="" src="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-13-at-8-51-51-pm.png" title="Screen Shot 2012-02-13 at 8.51.51 PM" /></a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://localhost:8000/tag/bashrc.html">bashrc</a>
+      <a href="http://localhost:8000/tag/could-not-find-any-x11-fonts.html">Could not Find any X11 fonts</a>
+      <a href="http://localhost:8000/tag/python.html">python</a>
+      <a href="http://localhost:8000/tag/r.html">R</a>
+      <a href="http://localhost:8000/tag/r-foundation-for-statistical-computing.html">R Foundation for Statistical Computing</a>
+      <a href="http://localhost:8000/tag/rpy.html">rpy</a>
+      <a href="http://localhost:8000/tag/rpy2-and-python.html">rpy2 and python</a>
+      <a href="http://localhost:8000/tag/x11.html">X11</a>
+      <a href="http://localhost:8000/tag/x11-fonts.html">x11 fonts</a>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'namitkewatgithubio';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+      <p>&copy; Namit Kewat 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "Solution of "Could not Find any X11 fonts, check that Font path is correct" while working with "R-statistics" and "Python-rpy2" on MAC LION 10.7.2",
+  "headline": "Solution of "Could not Find any X11 fonts, check that Font path is correct" while working with "R-statistics" and "Python-rpy2" on MAC LION 10.7.2",
+  "datePublished": "2012-02-13 21:00:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "namitkewat",
+    "url": "http://localhost:8000/author/namitkewat.html"
+  },
+  "image": "https://avatars1.githubusercontent.com/u/1215126?v=3&s=460",
+  "url": "http://localhost:8000/solution-of-could-not-find-any-x11-fonts-check-that-font-path-is-correct-working-with-r-statistics-and-python-rpy2.html",
+  "description": "Such kind of error i got while i want to get some graphics using python and rpy on Mac LION 10.7.2. After some google i got the solution, but that search was very tedious, so i decided to simplified the whole procedure. Below is the solution for that ..."
+}
+</script></body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+<meta name="author" content="namitkewat" />
+<meta name="description" content="I was just thinking that what i can do with my xbrlMapper module, so i thought lets try to make something like arelle's fact-list(3rd and last image of this post; 'www.arelle.org"). I have extended my present library; added new method "reportGen"; a methods with returns dicts ..." />
+<meta name="keywords" content="arelle, python xbrl, xbrl instance facts, xbrlMapper">
+<meta property="og:site_name" content="Namit Kewat's Blog"/>
+<meta property="og:title" content="xbrlMapper- "Facts": my first attempt to Arelle's Fact-List"/>
+<meta property="og:description" content="I was just thinking that what i can do with my xbrlMapper module, so i thought lets try to make something like arelle's fact-list(3rd and last image of this post; 'www.arelle.org"). I have extended my present library; added new method "reportGen"; a methods with returns dicts ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000/xbrlmapper-facts-my-first-attempt-to-arelles-fact-list.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2012-09-17 00:54:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://localhost:8000/author/namitkewat.html">
+<meta property="article:section" content="XBRL"/>
+<meta property="article:tag" content="arelle"/>
+<meta property="article:tag" content="python xbrl"/>
+<meta property="article:tag" content="xbrl instance facts"/>
+<meta property="article:tag" content="xbrlMapper"/>
+<meta property="og:image" content="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460">  <title>Namit Kewat's Blog &ndash; xbrlMapper- "Facts": my first attempt to Arelle's Fact-List</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460" alt="" title="">
+      </a>
+      <h1><a href="http://localhost:8000"></a></h1>
+      <p>Python, XBRL, Finance, MongoDB</p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About me</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/namitkewat" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/namitkewat" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1283171/namit" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/namitkewat" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="xbrlmapper-facts-my-first-attempt-to-arelles-fact-list">xbrlMapper- "Facts": my first attempt to Arelle's Fact-List</h1>
+    <p>Posted on Mon 17 September 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a></p>
+  </header>
+  <div>
+    <p>I was just thinking that what i can do with my <a href="http://namitkewat.wordpress.com/2012/08/16/xbrlmapper-pythonic-library-for-xbrlxml-analytics/" title="xbrlMapper">xbrlMapper
+module</a>,
+so i thought lets try to make something  like arelle's fact-list(3rd and
+last image of this post; 'www.arelle.org").</p>
+<p>I have extended my present library; added new method "reportGen"; a
+methods with returns dicts of instance document's facts; and i really
+love dicts; specially after watching pycon-2010 talk on dict "<a href="http://blip.tv/pycon-us-videos-2009-2010-2011/pycon-2010-the-mighty-dictionary-55-3352147" title="The Mighty Dictionary">The
+Mighty
+Dictionary</a>".</p>
+<p>See the snaps i am uploading to this post. Though the speed of process
+is fast but i am not satisfied because if it now takes 2.5sec for one
+xbrl package then how much time it will take for 20,000 xbrl
+packages!!!!</p>
+<p>You know when i have started working on this , it has taken 71 seconds
+in first attempt(in evening of day one), it was like i am in stone-age
+ #\$@#\^@%#&amp;.<br />
+So i have decided to improve it, then 25 sec, 20 sec(7 PM.. .of day
+one) then 35 sec- 40 sec(11 PM.. day 1).. .lollzz.. that evening was
+very funny, all time it was moving around 30 seconds!!! and then
+suddenly 9.5 sec(at 00:30AM of day2), and then 4.5 sec(aaa...5:30AM day
+2), then finally its near 2-2.5 sec(..day 2..7:30AM.. then i left it
+because i have to go to my office), but my intuition is telling me that
+we can reduce it even further.</p>
+<p>[gallery link="file" columns="2"]</p>
+<p>Here in fist image; its snap-shot of Arelle's fact-list, in
+second  shows amount of python code i have to write to achieve this, and
+finally in last image... final output, its a sqlite db view in firefox
+plugin.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://localhost:8000/tag/arelle.html">arelle</a>
+      <a href="http://localhost:8000/tag/python-xbrl.html">python xbrl</a>
+      <a href="http://localhost:8000/tag/xbrl-instance-facts.html">xbrl instance facts</a>
+      <a href="http://localhost:8000/tag/xbrlmapper.html">xbrlMapper</a>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'namitkewatgithubio';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+      <p>&copy; Namit Kewat 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "xbrlMapper- "Facts": my first attempt to Arelle's Fact-List",
+  "headline": "xbrlMapper- "Facts": my first attempt to Arelle's Fact-List",
+  "datePublished": "2012-09-17 00:54:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "namitkewat",
+    "url": "http://localhost:8000/author/namitkewat.html"
+  },
+  "image": "https://avatars1.githubusercontent.com/u/1215126?v=3&s=460",
+  "url": "http://localhost:8000/xbrlmapper-facts-my-first-attempt-to-arelles-fact-list.html",
+  "description": "I was just thinking that what i can do with my xbrlMapper module, so i thought lets try to make something like arelle's fact-list(3rd and last image of this post; 'www.arelle.org"). I have extended my present library; added new method "reportGen"; a methods with returns dicts ..."
+}
+</script></body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+<meta name="author" content="namitkewat" />
+<meta name="description" content="Hello friends, New updated xbrlfinapphas been released. Now It has more capabilities and more dynamic nature. So its going to be fun; and i am sure you will enjoy analysis of xbrl financial data. Visit xbrlfinapp at: http://xbrlfinapp.pythonanywhere.com/" />
+<meta name="keywords" content="financial analysis, python, xbrl, xbrl analytics, xbrl fin app, xbrl financial analysis, xbrl finapp, xbrlfinapp">
+<meta property="og:site_name" content="Namit Kewat's Blog"/>
+<meta property="og:title" content="XBRLFINAPP: XBRL financial analytics Platform - beta1.0 release"/>
+<meta property="og:description" content="Hello friends, New updated xbrlfinapphas been released. Now It has more capabilities and more dynamic nature. So its going to be fun; and i am sure you will enjoy analysis of xbrl financial data. Visit xbrlfinapp at: http://xbrlfinapp.pythonanywhere.com/"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000/xbrlfinapp-beta1-0-release.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2013-03-11 11:14:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://localhost:8000/author/namitkewat.html">
+<meta property="article:section" content="XBRL"/>
+<meta property="article:tag" content="financial analysis"/>
+<meta property="article:tag" content="python"/>
+<meta property="article:tag" content="xbrl"/>
+<meta property="article:tag" content="xbrl analytics"/>
+<meta property="article:tag" content="xbrl fin app"/>
+<meta property="article:tag" content="xbrl financial analysis"/>
+<meta property="article:tag" content="xbrl finapp"/>
+<meta property="article:tag" content="xbrlfinapp"/>
+<meta property="og:image" content="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460">  <title>Namit Kewat's Blog &ndash; XBRLFINAPP: XBRL financial analytics Platform - beta1.0 release</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460" alt="" title="">
+      </a>
+      <h1><a href="http://localhost:8000"></a></h1>
+      <p>Python, XBRL, Finance, MongoDB</p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About me</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/namitkewat" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/namitkewat" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1283171/namit" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/namitkewat" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="xbrlfinapp-beta1-0-release">XBRLFINAPP: XBRL financial analytics Platform - beta1.0 release</h1>
+    <p>Posted on Mon 11 March 2013 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a></p>
+  </header>
+  <div>
+    <p>Hello friends,<br />
+New updated
+<a href="http://xbrlfinapp.pythonanywhere.com/" title="XBRLFINAPP">xbrlfinapp</a>has been
+released.</p>
+<p>Now It has more capabilities and more dynamic nature. So its going to be
+fun; and i am sure you will enjoy analysis of xbrl financial data.</p>
+<p>Visit xbrlfinapp at: <a href="http://xbrlfinapp.pythonanywhere.com/">http://xbrlfinapp.pythonanywhere.com/</a></p>
+<p><a href="http://namitkewat.files.wordpress.com/2013/03/welcome.png"><img alt="xbrl financial analysis home
+page" src="http://namitkewat.files.wordpress.com/2013/03/welcome.png" /></a></p>
+<p>Some important updates are:</p>
+<ul>
+<li><strong>Formula Design:</strong> Now user can design custom formulas. For that
+    they need to enter id of those xbrl elements. There are two types of
+    formulas(type1 and type2). type1 formulas accepts xbrl elements in
+    form of list/array of their ids. while type2 formulas are based on
+    type1 formulas where you can write simple arithmetic formulas based
+    on previously designed type1 formulas</li>
+<li><strong>login system:</strong> User has to register and login to get started with
+    the app</li>
+<li><strong>Makeover of app</strong>: website's look and feel has been update to make
+    user comfortable with the site</li>
+</ul>
+<p>Most important of them are formula building. User can build their
+formulas.  In mathematics; formulas are as simple as: x=3,y=2,z=x+y;</p>
+<p>Like this; user can write their own financial formulas.</p>
+<p>For example:</p>
+<p>lets download sample xbrl: <a href="http://www.sec.gov/Archives/edgar/data/1142596/000144530513000348/0001445305-13-000348-xbrl.zip" title="NUVASIVE INC's' 2012-10-K">NUVASIVE INC's 2012,
+10-K</a>,
+and upload this at xbrlfinapp.</p>
+<p>UGT has xbrl element '<em>us-gaap_AssetsCurrent</em>' for Current Assets(or in
+simple manner, just assume, if x=30). So lets we first create type1
+formula of this by giving it a name and in input list.</p>
+<p><a href="http://namitkewat.files.wordpress.com/2013/03/assets_frm.png"><img alt="current asset's type1
+formula" src="http://namitkewat.files.wordpress.com/2013/03/assets_frm.png" /></a></p>
+<p>Similarly for current liabilities we have element
+'<em>us-gaap_LiabilitiesCurrent</em>', and we will create type1 formula(or in
+simple manner, just assume, if y=20) for it as:</p>
+<p><a href="http://namitkewat.files.wordpress.com/2013/03/lia_frm.png"><img alt="liabilities type1
+formula" src="http://namitkewat.files.wordpress.com/2013/03/lia_frm.png" /></a></p>
+<p>So output of this operation at xbrlfinapp will be something like(if you
+have upload valid sec filled xbrl package) :</p>
+<p><a href="http://namitkewat.files.wordpress.com/2013/03/assets-n-lia.png"><img alt="assets n
+lia" src="http://namitkewat.files.wordpress.com/2013/03/assets-n-lia.png" /></a></p>
+<p>All that was for type1 formulas. Now type2. Say we want to find out
+working capital; then formula for it in general is current assets -
+current liabilities. So in XBRLFINAPP we can write such mathematical
+equations in type2 formulas.</p>
+<p>Create type2 formula of working capital as:</p>
+<p><a href="http://namitkewat.files.wordpress.com/2013/03/wc_frm.png"><img alt="working capital's type2
+formula" src="http://namitkewat.files.wordpress.com/2013/03/wc_frm.png" /></a></p>
+<p>We have just wrote "currentAssets - currnetlia" as a input and give it a
+name 'workingCapital'(as simple as "z=x-y"). So output of this operation
+will be:</p>
+<p><a href="http://namitkewat.files.wordpress.com/2013/03/wc.png"><img alt="wc" src="http://namitkewat.files.wordpress.com/2013/03/wc.png" /></a></p>
+<p>Similarly type2 formula of current ratio can we written as:</p>
+<p><a href="http://namitkewat.files.wordpress.com/2013/03/currentratio_frm.png"><img alt="current ratio's type2
+formula" src="http://namitkewat.files.wordpress.com/2013/03/currentratio_frm.png" /></a></p>
+<p>and its result will be:</p>
+<p><a href="http://namitkewat.files.wordpress.com/2013/03/currentratio.png"><img alt="currentratio" src="http://namitkewat.files.wordpress.com/2013/03/currentratio.png" /></a></p>
+<p>By this way; user is allowed to use "+","-" and "/" operator with "(" or
+")" for writing equations.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>type1 formulas will contain array or list of ids of xbrl
+    elements(separated by comma) which you want to add. and these
+    elements must have same item type. If user has added different item
+    type elements; nothing will happen. you can also add ids of
+    extension elements.</li>
+<li>type2 formulas will contain previously formulated type1 and type2
+    formulas.</li>
+<li>And you can't delete type1 or type2 formulas which are used in
+    formulas which were created after it.</li>
+<li>You can't modify the name or alias of formula after creating it. To
+    modify it first delete it and then create it again with new name or
+    alias.</li>
+</ul>
+<h3><strong>One of the most important feature of xbrlfinapp is; its intelligent element discovery.</strong></h3>
+<p>XBRLFINAPP is intelligent in terms of finding element. For example if
+the first xbrl element of input array of type1 formula is not present in
+instance then it will find its part; and return the total. for example;
+in this filling lets find "cash and cash equivalents". But it is not
+present. So xbrlfinapp will search for its component and will return
+total of them(by resolving itemtype, balance type, context, unit, period
+in background), and if additional xbrl elements has been added as input;
+then rest of that type1 array will be added into this total if they are
+the not part of first element. Part means: are they duplicate or they
+are part of cash or cash equivalents. It means if user has created
+extension then we can  add extensions here.</p>
+<p><a href="http://namitkewat.files.wordpress.com/2013/03/cashequ_frm.png"><img alt="cash equ type1
+formula" src="http://namitkewat.files.wordpress.com/2013/03/cashequ_frm.png" /></a></p>
+<p>Output of this is:</p>
+<p><a href="http://namitkewat.files.wordpress.com/2013/03/cashequ.png"><img alt="cashequ" src="http://namitkewat.files.wordpress.com/2013/03/cashequ.png" /></a></p>
+<p>Here; output has 4 values because XBRLFINAPP with search for element in
+complete filling. Also; look at the filtered elements list; it has two
+elements; and when you look at the balance sheet; here they are:</p>
+<p><a href="http://namitkewat.files.wordpress.com/2013/03/screen-shot-2013-03-12-at-11-18-59-pm.png"><img alt="Screen shot 2013-03-12 at 11.18.59
+PM" src="http://namitkewat.files.wordpress.com/2013/03/screen-shot-2013-03-12-at-11-18-59-pm.png" /></a></p>
+<p><strong>Such type of issue was the most challenging part for me; For example;
+hardest question were:</strong></p>
+<p><strong>1. how will you calculate current ratio if filler has not provided
+current assets's tag?</strong></p>
+<p><strong>2. How will calculate Net Income if filler hasn't tagged it??</strong></p>
+<p><em>But now;  this question has been resolved by xbrlfinapp :)</em></p>
+<p>So my formulas are now constant for all companies. I don't require to
+change them for companies to companies.</p>
+<p>For more register and login
+<a href="http://xbrlfinapp.pythonanywhere.com/" title="XBRLFINAPP">xbrlfinapp</a>; you
+will receive 35 formulas by defaults. you can learn from them how to
+create formulas based on these formulas.</p>
+<p>Anyways; friends if you face any query/error/bug; please email me about
+that at "namitkewat@gmail.com".</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://localhost:8000/tag/financial-analysis.html">financial analysis</a>
+      <a href="http://localhost:8000/tag/python.html">python</a>
+      <a href="http://localhost:8000/tag/xbrl.html">xbrl</a>
+      <a href="http://localhost:8000/tag/xbrl-analytics.html">xbrl analytics</a>
+      <a href="http://localhost:8000/tag/xbrl-fin-app.html">xbrl fin app</a>
+      <a href="http://localhost:8000/tag/xbrl-financial-analysis.html">xbrl financial analysis</a>
+      <a href="http://localhost:8000/tag/xbrl-finapp.html">xbrl finapp</a>
+      <a href="http://localhost:8000/tag/xbrlfinapp.html">xbrlfinapp</a>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'namitkewatgithubio';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+      <p>&copy; Namit Kewat 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "XBRLFINAPP: XBRL financial analytics Platform - beta1.0 release",
+  "headline": "XBRLFINAPP: XBRL financial analytics Platform - beta1.0 release",
+  "datePublished": "2013-03-11 11:14:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "namitkewat",
+    "url": "http://localhost:8000/author/namitkewat.html"
+  },
+  "image": "https://avatars1.githubusercontent.com/u/1215126?v=3&s=460",
+  "url": "http://localhost:8000/xbrlfinapp-beta1-0-release.html",
+  "description": "Hello friends, New updated xbrlfinapphas been released. Now It has more capabilities and more dynamic nature. So its going to be fun; and i am sure you will enjoy analysis of xbrl financial data. Visit xbrlfinapp at: http://xbrlfinapp.pythonanywhere.com/"
+}
+</script></body>
+</html>

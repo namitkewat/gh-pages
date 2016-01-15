@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+<meta name="author" content="namitkewat" />
+<meta name="description" content="Last week, I have faced some internet issue with my ISP. So in free time; i spent some time exploring vagrant boxes with its command line help and followed the instruction to setup the box. I have earlier tried that but that was followed using some online post and didn ..." />
+<meta name="keywords" content="">
+<meta property="og:site_name" content="Namit Kewat's Blog"/>
+<meta property="og:title" content="My First experiance with Vagrant"/>
+<meta property="og:description" content="Last week, I have faced some internet issue with my ISP. So in free time; i spent some time exploring vagrant boxes with its command line help and followed the instruction to setup the box. I have earlier tried that but that was followed using some online post and didn ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000/my-first-experiance-with-vagrant.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-08-22 12:22:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://localhost:8000/author/namitkewat.html">
+<meta property="article:section" content="General"/>
+<meta property="og:image" content="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460">  <title>Namit Kewat's Blog &ndash; My First experiance with Vagrant</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460" alt="" title="">
+      </a>
+      <h1><a href="http://localhost:8000"></a></h1>
+      <p>Python, XBRL, Finance, MongoDB</p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About me</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/namitkewat" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/namitkewat" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1283171/namit" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/namitkewat" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="my-first-experiance-with-vagrant">My First experiance with Vagrant</h1>
+    <p>Posted on Sat 22 August 2015 in <a href="http://localhost:8000/category/general.html">General</a></p>
+  </header>
+  <div>
+    <p>Last week, I have faced some internet issue with my ISP. So in free
+time; i spent some time exploring vagrant boxes with its command line
+help and followed the instruction to setup the box. I have earlier tried
+that but that was followed using some online post and didn't remember
+those steps. So command line help was useful.</p>
+<p>Setup is very easy. It will take just few minutes. I have recorded the
+step. Those are below:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130</pre></div></td><td class="code"><div class="codehilite"><pre>Microsoft Windows <span class="o">[</span>Version 6.3.9600<span class="o">]</span>  
+<span class="o">(</span>c<span class="o">)</span> <span class="m">2013</span> Microsoft Corporation. All rights reserved.
+
+C:<span class="se">\\</span>Users<span class="se">\\</span>namitkewat<span class="se">\&gt;</span>vagrant box --help  
+Usage: vagrant box <span class="se">\&lt;</span>subcommand<span class="se">\&gt;</span> <span class="o">[</span><span class="se">\&lt;</span>args<span class="se">\&gt;</span><span class="o">]</span>
+
+Available subcommands:  
+add  
+list  
+outdated  
+remove  
+repackage  
+update
+
+For <span class="nb">help </span>on any individual subcommand run <span class="se">\`</span>vagrant box
+<span class="se">\&lt;</span>subcommand<span class="se">\&gt;</span> -h<span class="se">\`</span>
+
+C:<span class="se">\\</span>Users<span class="se">\\</span>namitkewat<span class="se">\&gt;</span>vagrant box add --help  
+Usage: vagrant box add <span class="o">[</span>options<span class="o">]</span> <span class="se">\&lt;</span>name, url, or path<span class="se">\&gt;</span>
+
+Options:
+
+-c, --clean Clean any temporary download files  
+-f, --force Overwrite an existing box <span class="k">if</span> it exists  
+--insecure Do not validate SSL certificates  
+--cacert FILE CA certificate <span class="k">for</span> SSL download  
+--capath DIR CA certificate directory <span class="k">for</span> SSL download  
+--cert FILE A client SSL cert, <span class="k">if</span> needed  
+--location-trusted Trust <span class="s1">&#39;Location&#39;</span> header from HTTP redirects  
+and use the same credentials <span class="k">for</span> subsequent urls as <span class="k">for</span> the initial
+one  
+--provider PROVIDER Provider the box should satisfy  
+--box-version VERSION Constrain version of the added box
+
+The box descriptor can be the name of a box on HashiCorp<span class="s1">&#39;s Atlas,  </span>
+<span class="s1">or a URL, or a local .box file, or a local .json file containing  </span>
+<span class="s1">the catalog metadata.</span>
+
+<span class="s1">The options below only apply if you&#39;</span>re adding a box file directly,  
+and not using a Vagrant server or a box structured like <span class="s1">&#39;user/box&#39;</span>:
+
+--checksum CHECKSUM Checksum <span class="k">for</span> the box  
+--checksum-type TYPE Checksum <span class="nb">type</span> <span class="o">(</span>md5, sha1, sha256<span class="o">)</span>  
+--name BOX Name of the box  
+-h, --help Print this <span class="nb">help</span>
+
+C:<span class="se">\\</span>Users<span class="se">\\</span>namitkewat<span class="se">\&gt;</span>vagrant box add
+F:<span class="se">\\</span>ubuntu-14.04-amd64-vbox.box --name ubuntu  
+<span class="nv">1404</span>  
+<span class="o">==</span><span class="se">\&gt;</span> box: Box file was not detected as metadata. Adding it directly...  
+<span class="o">==</span><span class="se">\&gt;</span> box: Adding box <span class="s1">&#39;ubuntu1404&#39;</span> <span class="o">(</span>v0<span class="o">)</span> <span class="k">for</span> provider:  
+box: Unpacking necessary files from:
+file://F:/ubuntu-14.04-amd64-vbox.box  
+box:  
+An error occurred <span class="k">while</span> downloading the remote file. The error  
+message, <span class="k">if</span> any, is reproduced below. Please fix this error and try  
+again.
+
+Couldn<span class="s1">&#39;t open file /ubuntu-14.04-amd64-vbox.box</span>
+
+<span class="s1">C:\\Users\\namitkewat\&gt;F:</span>
+
+<span class="s1">F:\\\&gt;vagrant box add ubuntu-14.04-amd64-vbox.box --name ubuntu1404  </span>
+<span class="s1">==\&gt; box: Box file was not detected as metadata. Adding it directly...  </span>
+<span class="s1">==\&gt; box: Adding box &#39;</span>ubuntu1404<span class="s1">&#39; (v0) for provider:  </span>
+<span class="s1">box: Unpacking necessary files from:</span>
+<span class="s1">file://F:/ubuntu-14.04-amd64-vbox.box  </span>
+<span class="s1">box: Progress: 100% (Rate: 615M/s, Estimated time remaining: --:--:--)  </span>
+<span class="s1">==\&gt; box: Successfully added box &#39;</span>ubuntu1404<span class="s1">&#39; (v0) for &#39;</span>virtualbox<span class="s1">&#39;!</span>
+
+<span class="s1">F:\\\&gt;mkdir vagrant\_work</span>
+
+<span class="s1">F:\\\&gt;cd vagrant\_work</span>
+
+<span class="s1">F:\\vagrant\_work\&gt;mkdir ubuntu1404</span>
+
+<span class="s1">F:\\vagrant\_work\&gt;cd ubuntu1404</span>
+
+<span class="s1">F:\\vagrant\_work\\ubuntu1404\&gt;vagrant init ubuntu1404  </span>
+<span class="s1">A \`Vagrantfile\` has been placed in this directory. You are now  </span>
+<span class="s1">ready to \`vagrant up\` your first virtual environment! Please read  </span>
+<span class="s1">the comments in the Vagrantfile as well as documentation on  </span>
+<span class="s1">\`vagrantup.com\` for more information on using Vagrant.</span>
+
+<span class="s1">F:\\vagrant\_work\\ubuntu1404\&gt;dir  </span>
+<span class="s1">Volume in drive F has no label.  </span>
+<span class="s1">Volume Serial Number is 5AFD-1ED3</span>
+
+<span class="s1">Directory of F:\\vagrant\_work\\ubuntu1404</span>
+
+<span class="s1">09-08-2015 16:03 \&lt;DIR\&gt; .  </span>
+<span class="s1">09-08-2015 16:03 \&lt;DIR\&gt; ..  </span>
+<span class="s1">09-08-2015 16:03 3,093 Vagrantfile  </span>
+<span class="s1">1 File(s) 3,093 bytes  </span>
+<span class="s1">2 Dir(s) 210,471,010,304 bytes free</span>
+
+<span class="s1">F:\\vagrant\_work\\ubuntu1404\&gt;vagrant up  </span>
+<span class="s1">Bringing machine &#39;</span>default<span class="s1">&#39; up with &#39;</span>virtualbox<span class="s1">&#39; provider...  </span>
+<span class="s1">==\&gt; default: Importing base box &#39;</span>ubuntu1404<span class="s1">&#39;...  </span>
+<span class="s1">==\&gt; default: Matching MAC address for NAT networking...  </span>
+<span class="s1">==\&gt; default: Setting the name of the VM:</span>
+<span class="s1">ubuntu1404\_default\_1439116510430\_18589  </span>
+<span class="s1">==\&gt; default: Clearing any previously set forwarded ports...  </span>
+<span class="s1">==\&gt; default: Clearing any previously set network interfaces...  </span>
+<span class="s1">==\&gt; default: Preparing network interfaces based on configuration...  </span>
+<span class="s1">default: Adapter 1: nat  </span>
+<span class="s1">==\&gt; default: Forwarding ports...  </span>
+<span class="s1">default: 22 =\&gt; 2222 (adapter 1)  </span>
+<span class="s1">==\&gt; default: Booting VM...  </span>
+<span class="s1">==\&gt; default: Waiting for machine to boot. This may take a few</span>
+<span class="s1">minutes...  </span>
+<span class="s1">default: SSH address: 127.0.0.1:2222  </span>
+<span class="s1">default: SSH username: vagrant  </span>
+<span class="s1">default: SSH auth method: private key  </span>
+<span class="s1">default: Warning: Connection timeout. Retrying...  </span>
+<span class="s1">default:  </span>
+<span class="s1">default: Vagrant insecure key detected. Vagrant will automatically</span>
+<span class="s1">replace  </span>
+<span class="s1">default: this with a newly generated keypair for better security.  </span>
+<span class="s1">default:  </span>
+<span class="s1">default: Inserting generated public key within guest...  </span>
+<span class="s1">default: Removing insecure key from the guest if it&#39;</span>s present...  
+default: Key inserted! Disconnecting and reconnecting using new SSH
+key...  
+<span class="o">==</span><span class="se">\&gt;</span> default: Machine booted and ready!  
+<span class="o">==</span><span class="se">\&gt;</span> default: Checking <span class="k">for</span> guest additions in VM...  
+<span class="o">==</span><span class="se">\&gt;</span> default: Mounting shared folders...  
+default: /vagrant <span class="o">=</span><span class="se">\&gt;</span> F:/vagrant<span class="se">\_</span>work/ubuntu1404
+
+F:<span class="se">\\</span>vagrant<span class="se">\_</span>work<span class="se">\\</span>ubuntu1404<span class="se">\&gt;</span>
+</pre></div>
+</td></tr></table>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'namitkewatgithubio';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+      <p>&copy; Namit Kewat 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "My First experiance with Vagrant",
+  "headline": "My First experiance with Vagrant",
+  "datePublished": "2015-08-22 12:22:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "namitkewat",
+    "url": "http://localhost:8000/author/namitkewat.html"
+  },
+  "image": "https://avatars1.githubusercontent.com/u/1215126?v=3&s=460",
+  "url": "http://localhost:8000/my-first-experiance-with-vagrant.html",
+  "description": "Last week, I have faced some internet issue with my ISP. So in free time; i spent some time exploring vagrant boxes with its command line help and followed the instruction to setup the box. I have earlier tried that but that was followed using some online post and didn ..."
+}
+</script></body>
+</html>

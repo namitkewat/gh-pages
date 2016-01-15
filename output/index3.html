@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Namit Kewat" />
+  <meta name="description" content="Namit kewat's Thoughts and Writings" />
+<meta property="og:site_name" content="Namit Kewat's Blog"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Namit Kewat's Blog"/>
+<meta property="og:description" content="Namit kewat's Thoughts and Writings"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000"/>
+<meta property="og:image" content="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460">
+  <title>Namit Kewat's Blog</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460" alt="" title="">
+      </a>
+      <h1><a href="http://localhost:8000"></a></h1>
+      <p>Python, XBRL, Finance, MongoDB</p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About me</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/namitkewat" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/namitkewat" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1283171/namit" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/namitkewat" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/automating-calucation-of-decimal-value-from-scale-for-xbrl-fact.html#automating-calucation-of-decimal-value-from-scale-for-xbrl-fact">automating calucation of decimal value from scale for xbrl fact</a></h2>
+    <p>
+      Posted on Sat 28 July 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a>
+      &#8226; <a href="http://localhost:8000/automating-calucation-of-decimal-value-from-scale-for-xbrl-fact.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>Today in office or currently in office; (both are right...)</p>
+<p>i am making python script that can automate calculation of decimal value
+from scale for various cases of xbrl instance facts.</p>
+<p>Here below, i am giving my current output.</p>
+<p><strong>(scale, excel value) (decimal, instance value)</strong></p>
+<p><strong>(None, '2345') ('INF', '2345')</strong><br />
+<strong>('3', '439.10') (-1, '439100')</strong><br />
+<strong>('-4', '1789000') (4, '178.9')</strong><br />
+<strong>('-3', '0.006') (6, '0.000006')</strong><br />
+<strong>('0', '3987') (0, '3987')</strong><br />
+<strong>('0', '0.0660') (4, '0.066')</strong><br />
+<strong>('2', '100') (-2, '10000')</strong><br />
+<strong>('2', '100.0') (-1, '10000')</strong><br />
+<strong>('2', '100.00') (0, '10000')</strong><br />
+<strong>('3', '100.660') (0, '100660')</strong><br />
+<strong>('6', '2.5') (-5, '2500000')</strong><br />
+<strong>('6', '2.50') (-4, '2500000')</strong><br />
+<strong>('6', '2.500') (-3, '2500000')</strong><br />
+<strong>('6', '2.540') (-3, '2540000')</strong><br />
+<strong>('-1', '0.1') (2, '0.01')</strong><br />
+<strong>('-2', '0.12') (4, '0.0012')</strong><br />
+<strong>('-3', '0.123') (6, '0.000123')</strong><br />
+<strong>('9', '10.5') (-8, '10500000000')</strong><br />
+<strong>('9', '105') (-9, '105000000000')</strong><br />
+<strong>('0', '0.02') (2, '0.02')</strong><br />
+<strong>(None, '0.02') ('INF', '0.02')</strong></p>
+<p>Here in 1st tuple(bracket); 1st value is the scale i am applying on cell
+value on excel, and that value is on 2nd position of this tuple.</p>
+<p>and in second bracket(tuple), its what the heading of this post.</p>
+<p>1st value of second tuple is its decimal value, while 2nd value is the
+value which i will send in instance document.</p>
+<p>Well here i have also tried on negative scales as well.</p>
+<p>It will remove the headache for analyst to worry about decimals (or
+"precision"; what Bowne guys have on their "Bowne tagger") ; he/she has
+to concern only about the scale value of fact, if it has any scale then
+apply it, program will intelligently calculate the decimal value, and if
+no scale is applied then it will put "INF" as a decimal for all numeric
+itemTypes.</p>
+<p>But let me check on live files.<br />
+If you find any mistake please feel free to inform me about that.</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/dynamic-excel-mapping-for-creating-xbrl-with-help-of-python.html#dynamic-excel-mapping-for-creating-xbrl-with-help-of-python">Dynamic excel mapping for creating XBRL with help of Python/elementTree/xlrd</a></h2>
+    <p>
+      Posted on Sat 14 July 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/excel.html">excel</a>,      <a href="http://localhost:8000/tag/excel-macro.html">excel macro</a>,      <a href="http://localhost:8000/tag/python.html">python</a>,      <a href="http://localhost:8000/tag/python-xbrl-creation.html">python xbrl creation</a>,      <a href="http://localhost:8000/tag/xbrl-creatiion.html">xbrl creatiion</a>,      <a href="http://localhost:8000/tag/xlrd.html">xlrd</a>,      <a href="http://localhost:8000/tag/xmlxbrl.html">xml/xbrl</a>      &#8226; <a href="http://localhost:8000/dynamic-excel-mapping-for-creating-xbrl-with-help-of-python.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>Yesterday was a great day for me.. .After 3 months of development i got
+little bit success, i have created xbrl package from excel with help of
+python language.</p>
+<p>I have developed my own mapping language which needs to be defined in
+excel which recognizes financial facts and their properties and then my
+python script recognizes it and make xbrl package.</p>
+<p>I have used "xlrd" library to deal with excel, "elementTree" to make
+XBRL with SQLite at the backed db support.</p>
+<p>I am able to create instance document, schema document, all linkbase
+files (presentation, calculation, label, definition) and its up-to xbrl
+2.1 specifications also.</p>
+<p>Anyway.. i will need help of VBA expert who can make it automate in
+excel end(I can do this also but it will take time to reach their)
+and First let me create its documentation and upload it to my cloud so
+that others can test/make xbrl package from it.</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/adding-new-line-and-encoding-infomation-while-creating-xmlxbrl-with-elementtreepython.html#adding-new-line-and-encoding-infomation-while-creating-xmlxbrl-with-elementtreepython">Adding new line and encoding infomation while creating XML/XBRL with ElementTree/Python</a></h2>
+    <p>
+      Posted on Tue 10 July 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/elementtree.html">elementTree</a>,      <a href="http://localhost:8000/tag/elementtreepython.html">ElementTree/Python</a>,      <a href="http://localhost:8000/tag/encoding.html">encoding</a>,      <a href="http://localhost:8000/tag/new-line.html">new line</a>,      <a href="http://localhost:8000/tag/processinginstruction.html">ProcessingInstruction</a>,      <a href="http://localhost:8000/tag/python.html">python</a>,      <a href="http://localhost:8000/tag/xbrl.html">xbrl</a>,      <a href="http://localhost:8000/tag/xbrl-creation.html">xbrl creation</a>      &#8226; <a href="http://localhost:8000/adding-new-line-and-encoding-infomation-while-creating-xmlxbrl-with-elementtreepython.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>I am making xbrl files with python ElementTree/python module. But there
+is a problem while creating an xbrl file. It writes it into a single
+line, which creates confusion a lot.</p>
+<p>So i have tried to modified the native ElementTree class which writes a
+xml  part. In windows it is located at the
+"<strong>C:\Python27\Lib\xml\etree\ElementTree.py</strong>" . In this file there
+is a function named as <strong>"_serialize_xml</strong>";  and i have hacked it a
+little bit. I have added a "\n" where angle bracket of xml element is
+defined. Screenshot for that is given
+below.<a href="http://namitkewat.files.wordpress.com/2012/07/xbrl1.jpg"><img alt="_serialize_xml" src="http://namitkewat.files.wordpress.com/2012/07/xbrl1.jpg" title="adding new line in xml while creating xml with ElementTree/python" /></a></p>
+<p>So i got my output xbrl as follows.</p>
+<p><a href="http://namitkewat.files.wordpress.com/2012/07/xbrl2.jpg"><img alt="xbrl
+output" src="http://namitkewat.files.wordpress.com/2012/07/xbrl2.jpg" title="xbrl output" /></a>Here
+you can see that now my python script makes xbrl package as i have
+wanted from it.<br />
+Anyway, rest is i want to add encoding information to it, how?</p>
+<p>Below is the solution,</p>
+<p><strong>    >>>ins_out=open(instant_filename,'wb',1000)</strong>  </p>
+<p><strong>    >>>ElementTree.ElementTree(top).write(ins_out,encoding="ASCII")</strong><br />
+<strong>    >>>ins_out.close()</strong></p>
+<p>here "instant_filename" is the output filename (example;
+"htwr-20121231.xml") while  "top" is the root element below which i have
+created my xml/xbrl file. Just add value of encoding to the instance
+method "write" of ElementTree.ElementTree</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/excel-macro-for-prevent-excel-from-removing-leading-and-trailing-zeros-in-a-cell.html#excel-macro-for-prevent-excel-from-removing-leading-and-trailing-zeros-in-a-cell">Excel Macro to Prevent Excel from Removing Leading and Trailing Zeros in a single Cell or Selection of Cells</a></h2>
+    <p>
+      Posted on Sat 23 June 2012 in <a href="http://localhost:8000/category/general.html">General</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/excel.html">excel</a>,      <a href="http://localhost:8000/tag/leading-zero.html">leading zero</a>,      <a href="http://localhost:8000/tag/macro.html">macro</a>,      <a href="http://localhost:8000/tag/trailing-zero.html">Trailing zero</a>      &#8226; <a href="http://localhost:8000/excel-macro-for-prevent-excel-from-removing-leading-and-trailing-zeros-in-a-cell.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>With use of macro given below you can apply <strong><em>="cell_value"</em></strong> on any
+selection.</p>
+<p>Solution is:</p>
+<p>[caption id="attachment_397" align="alignleft" width="460"]<a href="http://namitkewat.files.wordpress.com/2012/06/macro.jpg"><img alt="macro for
+preventing leading and trailling zeros in
+excel" src="http://namitkewat.files.wordpress.com/2012/06/macro.jpg" title="macro" /></a>
+macro for preventing leading and Trailing zeros in excel[/caption]</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/xbrl-errors-tracking-module-2-0-for-my-company.html#xbrl-errors-tracking-module-2-0-for-my-company">XBRL Errors Tracking module 2.0 for my company</a></h2>
+    <p>
+      Posted on Wed 16 May 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/python-cgi.html">python-cgi</a>,      <a href="http://localhost:8000/tag/sqlite.html">sqlite</a>,      <a href="http://localhost:8000/tag/xbrl-errors.html">xbrl errors</a>      &#8226; <a href="http://localhost:8000/xbrl-errors-tracking-module-2-0-for-my-company.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>I have updated my Errors tracking module. Its now "2.0"</p>
+<p>It is Python-CGI working under Apache server. I have developed it in
+spare time while working with Research and Development team at my
+company <a href="http://www.aptaracorp.com" title="Aptara Corp">Aptara</a>.</p>
+<p>In my previous release it was accepting only instance document every
+time for all three test. Analyst have to upload instance document again
+and again. It was time consuming and gives load on network and on server
+too.</p>
+<p>So in i have replace them all with single zip upload. Now analyst have
+to upload xbrl zip package. Zipped XBRL package is relatively small in
+size(about 1/10th of extracted content), so it will decrease the load on
+network.</p>
+<p>In back-end i am using SQLite database. SQlite is tiny, server-less
+database. Few high-level SQL queries are not present in SQLite, but if i
+require those functionality, then i am using python to solve them (Like
+List-comprehensions).</p>
+<p>Requirement of such tool is that, in my company we using
+"<a href="https://examiner.rrd.com">https://examiner.rrd.com</a>"  to find errors from XBRL package. But few
+errors that are not tracked by it, but needed to be removed. So analyst
+has to remove them for higher quality of xbrl package. On an average it
+took 2-3 hrs to check such errors. But all such errors are make
+available to analyst  in just matter of seconds with use of my tool.</p>
+<p>[gallery link="file" columns="2"]</p>
+<p>Here test 4 and test 5 are new. In test 4 we are finding elements whose
+negated and signage needs to be checked. In test 4 it is showing those
+elements from instance which are negative and doesn't have negated label
+as pereferredLabel in presentation linkbase. So as you can see in
+snap-shot it finds that element's value, its balance from company
+schema/or from US-GAAP taxonomy (while confirming if is from 2009, 2011
+or from 2012 UGT), its preferred label as well as its weight from
+calculation linkbase.</p>
+<p>In test 5, we are interested in checking various period type elements
+and their value in instance.</p>
+<ul>
+<li>xbrli:dateItemType</li>
+<li>us-types:dateStringItemType</li>
+<li>xbrli:dateTimeItemType</li>
+<li>xbrli:durationItemType</li>
+<li>us-types:durationStringItemType</li>
+<li>xbrli:gDayItemType</li>
+<li>xbrli:gMonthDayItemType</li>
+<li>xbrli:gMonthItemType</li>
+<li>xbrli:gYearItemType</li>
+<li>xbrli:gYearMonthItemType</li>
+<li>xbrli:timeItemType</li>
+</ul>
+<p>So this is it.</p>
+<p>This tool is working in all three production facilities (New Delhi,
+Trivendrum, Pune).</p>
+<p>Monthly statistics:</p>
+<ul>
+<li>total hits is about 10000-30000</li>
+<li>4000-8000 number of files uploaded</li>
+<li>total size of files after extraction is 8GB+</li>
+<li>total number of systems in intranet are about 300</li>
+<li>total Time saving 1000hrs-2000hrs (Assumption: if it saves 2 hrs per
+    file)</li>
+</ul>
+<p>In the end; SQLite is great.</p>
+<p>After seeing it working under such large work load, it creates a great
+respect for this tiny database. That's why, i want to tell: "If i am not
+using MongoDB then i am sure, i will using SQLite"</p>
+  </div>
+</article>
+
+  <div class="pagination">
+    <a class="btn" href="http://localhost:8000/index4.html">
+      <i class="fa fa-angle-left"></i> Older Posts
+    </a>
+      <a class="btn float-right" href="http://localhost:8000/index2.html">
+        Newer Posts <i class="fa fa-angle-right"></i>
+      </a>
+  </div>
+
+    <footer>
+      <p>&copy; Namit Kewat 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Namit Kewat's Blog ",
+  "url" : "http://localhost:8000",
+  "image": "https://avatars1.githubusercontent.com/u/1215126?v=3&s=460",
+  "description": "Namit kewat's Thoughts and Writings"
+}
+</script><script type="text/javascript">
+    var disqus_shortname = 'namitkewatgithubio';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

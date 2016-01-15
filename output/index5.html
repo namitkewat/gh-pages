@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Namit Kewat" />
+  <meta name="description" content="Namit kewat's Thoughts and Writings" />
+<meta property="og:site_name" content="Namit Kewat's Blog"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Namit Kewat's Blog"/>
+<meta property="og:description" content="Namit kewat's Thoughts and Writings"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000"/>
+<meta property="og:image" content="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460">
+  <title>Namit Kewat's Blog</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460" alt="" title="">
+      </a>
+      <h1><a href="http://localhost:8000"></a></h1>
+      <p>Python, XBRL, Finance, MongoDB</p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About me</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/namitkewat" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/namitkewat" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1283171/namit" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/namitkewat" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/solution-of-cant-turn-on-web-sharing-on-mac-osx-lion.html#solution-of-cant-turn-on-web-sharing-on-mac-osx-lion">Solution of "Can't turn on Web sharing on Mac OSX LION!"</a></h2>
+    <p>
+      Posted on Sun 05 February 2012 in <a href="http://localhost:8000/category/general.html">General</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/apache.html">Apache</a>,      <a href="http://localhost:8000/tag/mac-os-x.html">mac os x</a>,      <a href="http://localhost:8000/tag/osx-lion.html">osx-lion</a>,      <a href="http://localhost:8000/tag/web-sharing.html">web sharing</a>      &#8226; <a href="http://localhost:8000/solution-of-cant-turn-on-web-sharing-on-mac-osx-lion.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>I have upgraded my macbook from snow leopard to lion. I have to test
+some python-cgi, for that i want to use native apache that i shipped
+with mac operating system. But when i click the checkbox to turn it on
+it displays a dash in the checkbox, changes from 'Off' to 'starting...',
+and the gray indicator turns orange. This lasts for about a second then
+it turns off again.</p>
+<p>I went on google to find some idea! After two days of research i didn't
+get anything. I have decided to revert back to snow leapard due to such
+frustration.</p>
+<p>But then i got the solution.<br />
+As you can see in the screenshot of my terminal;</p>
+<p>When i did "sudo apachectl --help"<br />
+it comes as follow:<br />
+#################<br />
+dyld: Library not loaded: /usr/lib/libpq.5.dylib<br />
+Referenced from: /usr/sbin/httpd<br />
+Reason: image not found<br />
+/usr/sbin/apachectl: line 90: 1338 Trace/BPT trap: 5 \$HTTPD \$ARGV<br />
+#################</p>
+<p>so i went inside of the /usr/sbin and executed httpd in terminal,from
+here it become clear that "libpq.5.dylib" is not there. So i went inside
+/usr/lib/ to see which one i have. I found that "libpq.5.3.dylib" is
+there. And this is what i am looking for.</p>
+<p>Even i have tried to replace it with back-up "libpq.5.dylib.backup", but
+again it was not there. At-last i have created a symbolic link from
+"/usr/lib/libpq.5.3.dylib" to "/usr/lib/libpq.5.dylib":</p>
+<p>"sudo ln -s /usr/lib/libpq.5.3.dylib /usr/lib/libpq.5.dylib"</p>
+<p>Now go back to System preferences -> Sharing -> click on the "Web
+sharing"</p>
+<p>After few tapping on the same location it turns on, and
+"http://localhost/" displays "It Works!" :)</p>
+<p><a href="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-05-at-12-30-30-pm.png"><img alt="screenshot of
+terminal." src="http://namitkewat.files.wordpress.com/2012/02/screen-shot-2012-02-05-at-12-30-30-pm.png" title="Screen Shot 2012-02-05 at 12.30.30 PM" /></a></p>
+<p>Some useful links from where i got solution:</p>
+<p><a href="https://discussions.apple.com/thread/3190598?start=0&amp;tstart=0">https://discussions.apple.com/thread/3190598?start=0&amp;tstart=0</a></p>
+<p><a href="http://www.jonathandean.com/2011/08/postgresql-8-4-on-mac-os-x-10-7-lion/">http://www.jonathandean.com/2011/08/postgresql-8-4-on-mac-os-x-10-7-lion/</a></p>
+<p><a href="http://superuser.com/questions/352005/os-x-lion-web-sharing-cant-start">http://superuser.com/questions/352005/os-x-lion-web-sharing-cant-start</a></p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/xbrl-errors-tracking-module-1-1.html#xbrl-errors-tracking-module-1-1">XBRL Errors tracking module 1.1</a></h2>
+    <p>
+      Posted on Tue 24 January 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/efm.html">efm</a>,      <a href="http://localhost:8000/tag/rr-donnelley.html">rr donnelley</a>,      <a href="http://localhost:8000/tag/sec-fillings.html">sec fillings</a>      &#8226; <a href="http://localhost:8000/xbrl-errors-tracking-module-1-1.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>In my spare time i have developed to track XBRL errors which is not
+possible through <a href="https://examiner.rrd.com">RR Donnelley eXaminer</a>.</p>
+<p>These are regarding some EFM(<a href="http://www.sec.gov/info/edgar/edmanuals.htm">edgar filling
+manua</a>l) violations. In my
+company we are working for SEC fillings. We have to make them arrorading
+to SEC's EFM guidelines.</p>
+<p>But in that we are making some mistakes which are hard to track.</p>
+<p>To ease that process i made something on python cgi and configured it on
+<a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a>.</p>
+<p>Screen shots are as below.</p>
+<p>[gallery link="file"]</p>
+<p>I know, there are more such modules, which are yet to be developed.</p>
+<p>Its been 10 days since i have setup it, and server shows number of hits
+to around 5300+ . And average unique hits of about 43 out of around
+70-80 systems which are connected in intranet.</p>
+<p>These three simple module has saved a great time of financial analyst in
+my department and will increase the quality of output files.</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/sec-proposed-to-submit-python-code-for-abs-deals.html#sec-proposed-to-submit-python-code-for-abs-deals">SEC proposed to submit PYTHON code for ABS deals</a></h2>
+    <p>
+      Posted on Tue 24 January 2012 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a>
+      &#8226; Tagged with
+      <a href="http://localhost:8000/tag/asset-backed-securities.html">asset backed securities</a>,      <a href="http://localhost:8000/tag/python-code.html">python code</a>,      <a href="http://localhost:8000/tag/sec.html">SEC</a>,      <a href="http://localhost:8000/tag/xbrl.html">xbrl</a>      &#8226; <a href="http://localhost:8000/sec-proposed-to-submit-python-code-for-abs-deals.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>Last night i was surprised  when i found that <a href="http://sec.gov">sec.gov</a>
+has proposed(in 2010) a law for more regulation and transparency in
+disclosures for asset backed securities.</p>
+<p>But this was not submitting an XBRL or XML source, it is a python code.</p>
+<p>here are some lines which might create curiosity:</p>
+<p><em>    We are proposing to require that most ABS issuers file a computer
+program that gives effect to the flow of funds, or “waterfall,”
+provisions of the transaction. We are proposing that the computer
+program be filed on EDGAR in the form of downloadable source code in
+Python. … (page 205)</em></p>
+<p><em>    Under the proposed requirement, the filed source code, when
+downloaded and run by an investor, must provide the user with the
+ability to programmatically input the user’s own assumptions regarding
+the future performance and cash flows from the pool assets, including
+but not limited to assumptions about future interest rates, default
+rates, prepayment speeds, loss-given-default rates, and any other
+necessary assumptions … (page 210)</em></p>
+<p><em>    The waterfall computer program must also allow the use of the
+proposed asset-level data file that will be filed at the time of the
+offering and on a periodic basis thereafter. (page 211)</em></p>
+<p>Link to that document is:   
+<a href="http://www.sec.gov/rules/proposed/2010/33-9117.pdf">http://www.sec.gov/rules/proposed/2010/33-9117.pdf</a></p>
+<p>But do you think will industry allow it?</p>
+<p>Well i think, No.. they should never discloses any such code to public,
+Because its how they are making their money. Anyway this is a proposed
+rule.</p>
+<p>Up-to this point <a href="http://www.xbrl.org">XBRL</a> is great; but if python
+will be implemented,  it would definitely be a major step forward.</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/complete-xbrl-live-data-of-sec-gov.html#complete-xbrl-live-data-of-sec-gov">Complete XBRL Live data of SEC.GOV</a></h2>
+    <p>
+      Posted on Tue 18 October 2011 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a>
+      &#8226; <a href="http://localhost:8000/complete-xbrl-live-data-of-sec-gov.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>Here is an beautiful way to represent pool of XBRL data. It is provided
+by <a href="http://www.xbrl.us">xbrl.us</a></p>
+<p>You can visit it on the link below.</p>
+<p><a href="http://xbrl.us/research/pages/data.htm">http://xbrl.us/research/pages/data.htm</a></p>
+<p><a href="http://namitkewat.files.wordpress.com/2011/10/live_data_on_sec.jpg"><img alt="live_data_on_sec" src="http://namitkewat.files.wordpress.com/2011/10/live_data_on_sec_thumb.jpg" title="live_data_on_sec" /></a></p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/outlook-of-global-carbon-market.html#outlook-of-global-carbon-market">Outlook of Global Carbon Market</a></h2>
+    <p>
+      Posted on Sun 25 September 2011 in <a href="http://localhost:8000/category/general.html">General</a>
+      &#8226; <a href="http://localhost:8000/outlook-of-global-carbon-market.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>We can’t ignore this development. I believe that in distant future, it
+will be levied as a tax on the common people.</p>
+<p>But I believe this is not the proper way to address the main
+problem(Global warming). These are just quick-fixes, not long-term
+solution.</p>
+<p>Long-term solution requires change at global level, change that includes
+behavior of individual.</p>
+<p>Best example of this human behavior I found in movie in “Avatar”
+released in 2009, in which people from Pandora are very conscious about
+their environment and other animal. When such we learn such habit then
+only we can able to compete global warming.</p>
+<p><a href="http://video.economist.com/linking/index.jsp?skin=oneclip&amp;ehv=http://audiovideo.economist.com/&amp;fr_story=7a676751752db1507965a4b8868d3148b62939f3&amp;rf=ev&amp;hl=true">http://video.economist.com/linking/index.jsp?skin=oneclip&amp;ehv=http://audiovideo.economist.com/&amp;fr_story=7a676751752db1507965a4b8868d3148b62939f3&amp;rf=ev&amp;hl=true</a></p>
+  </div>
+</article>
+
+  <div class="pagination">
+    <a class="btn" href="http://localhost:8000/index6.html">
+      <i class="fa fa-angle-left"></i> Older Posts
+    </a>
+      <a class="btn float-right" href="http://localhost:8000/index4.html">
+        Newer Posts <i class="fa fa-angle-right"></i>
+      </a>
+  </div>
+
+    <footer>
+      <p>&copy; Namit Kewat 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Namit Kewat's Blog ",
+  "url" : "http://localhost:8000",
+  "image": "https://avatars1.githubusercontent.com/u/1215126?v=3&s=460",
+  "description": "Namit kewat's Thoughts and Writings"
+}
+</script><script type="text/javascript">
+    var disqus_shortname = 'namitkewatgithubio';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

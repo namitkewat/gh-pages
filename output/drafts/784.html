@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+<meta name="author" content="namitkewat" />
+<meta name="description" content="The purpose of this recipe is to access access outer class's attribute in deeper nested class. For this i wrote a class decorator, and to use it; decorate the classes in which your want to access outer class's attribute from its instance. [sourcecode language="python" wraplines="false" collapse ..." />
+<meta name="keywords" content="">
+<meta property="og:site_name" content="Namit Kewat's Blog"/>
+<meta property="og:title" content="Bound inner class in Python"/>
+<meta property="og:description" content="The purpose of this recipe is to access access outer class's attribute in deeper nested class. For this i wrote a class decorator, and to use it; decorate the classes in which your want to access outer class's attribute from its instance. [sourcecode language="python" wraplines="false" collapse ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000/drafts/784.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2013-02-17 16:53:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://localhost:8000/author/namitkewat.html">
+<meta property="article:section" content="General"/>
+<meta property="og:image" content="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460">  <title>Namit Kewat's Blog &ndash; Bound inner class in Python</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460" alt="" title="">
+      </a>
+      <h1><a href="http://localhost:8000"></a></h1>
+      <p>Python, XBRL, Finance, MongoDB</p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About me</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/namitkewat" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/namitkewat" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1283171/namit" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/namitkewat" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="784">Bound inner class in Python</h1>
+    <p>Posted on Sun 17 February 2013 in <a href="http://localhost:8000/category/general.html">General</a></p>
+  </header>
+  <div>
+    <p>The purpose of this recipe is to access access outer class's attribute
+in deeper nested class. For this i wrote a class decorator, and to use
+it; decorate the classes in which your want to access outer class's
+attribute from its instance.</p>
+<p>[sourcecode language="python" wraplines="false" collapse="false"]<br />
+class bound(object):<br />
+def __init__(self,cls):<br />
+self.cls=cls</p>
+<p>def __get__(self,outer, outerclass):<br />
+outercopy=outerclass.__dict__.copy()<br />
+try:<br />
+outercopy.update(outer.__dict__)<br />
+except AttributeError:<br />
+pass<br />
+outercopy.update(self.cls.__dict__)<br />
+outercopy['__name__']=self.cls.__name__<br />
+def repr1(self):<br />
+return "\&lt;"+self.__module__+"."+self.__name__ +" is object
+bound to " + repr(outer) +" at "+ hex(id(self))+">"<br />
+outercopy['__repr__']= repr1<br />
+result=type(self.cls.__name__,
+tuple(self.cls.mro()[1:]),outercopy)<br />
+return result<br />
+[/sourcecode]</p>
+<p>Use:</p>
+<p>[sourcecode language="python" wraplines="false" collapse="false"]<br />
+class test(object):<br />
+def __init__(self,val):<br />
+self.val=val<br />
+def pprint(self):<br />
+return "will return pprint"<br />
+def findmor(self,x):<br />
+return x.mro()</p>
+<p>@bound<br />
+class test1(object):<br />
+def __init__(self,mull):<br />
+self.mull=mull<br />
+def sqrt(self):<br />
+return self.mull**0.5<br />
+def add(self):<br />
+return self.mull+self.val</p>
+<p>@bound<br />
+class test2(test.test1):<br />
+def __init__(self,mull):<br />
+self.mull=mull<br />
+def add(self):<br />
+return self.mull*2+self.val<br />
+[/sourcecode]</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'namitkewatgithubio';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+      <p>&copy; Namit Kewat 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "Bound inner class in Python",
+  "headline": "Bound inner class in Python",
+  "datePublished": "2013-02-17 16:53:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "namitkewat",
+    "url": "http://localhost:8000/author/namitkewat.html"
+  },
+  "image": "https://avatars1.githubusercontent.com/u/1215126?v=3&s=460",
+  "url": "http://localhost:8000/drafts/784.html",
+  "description": "The purpose of this recipe is to access access outer class's attribute in deeper nested class. For this i wrote a class decorator, and to use it; decorate the classes in which your want to access outer class's attribute from its instance. [sourcecode language="python" wraplines="false" collapse ..."
+}
+</script></body>
+</html>

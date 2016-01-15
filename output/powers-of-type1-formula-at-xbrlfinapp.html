@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+<meta name="author" content="namitkewat" />
+<meta name="description" content="In this post i am going to explain type1 formula/array in details. type1 formula/array is the most important, fundamental building block of xbrlfinapp. It represent an xbrl element in terms of array. To understand this; lets take an example: Suppose we want to calculate "Total Assets" and in ..." />
+<meta name="keywords" content="type1 xbrlfinapp formula, xbrl, xbrl analytics, xbrlfinapp">
+<meta property="og:site_name" content="Namit Kewat's Blog"/>
+<meta property="og:title" content="Powers of type1 Formula at xbrlfinapp"/>
+<meta property="og:description" content="In this post i am going to explain type1 formula/array in details. type1 formula/array is the most important, fundamental building block of xbrlfinapp. It represent an xbrl element in terms of array. To understand this; lets take an example: Suppose we want to calculate "Total Assets" and in ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000/powers-of-type1-formula-at-xbrlfinapp.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2013-03-13 17:23:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://localhost:8000/author/namitkewat.html">
+<meta property="article:section" content="XBRL"/>
+<meta property="article:tag" content="type1 xbrlfinapp formula"/>
+<meta property="article:tag" content="xbrl"/>
+<meta property="article:tag" content="xbrl analytics"/>
+<meta property="article:tag" content="xbrlfinapp"/>
+<meta property="og:image" content="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460">  <title>Namit Kewat's Blog &ndash; Powers of type1 Formula at xbrlfinapp</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://avatars1.githubusercontent.com/u/1215126?v=3&s=460" alt="" title="">
+      </a>
+      <h1><a href="http://localhost:8000"></a></h1>
+      <p>Python, XBRL, Finance, MongoDB</p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About me</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/namitkewat" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/namitkewat" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1283171/namit" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/namitkewat" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="powers-of-type1-formula-at-xbrlfinapp">Powers of type1 Formula at xbrlfinapp</h1>
+    <p>Posted on Wed 13 March 2013 in <a href="http://localhost:8000/category/xbrl.html">XBRL</a></p>
+  </header>
+  <div>
+    <p>In this post i am going to explain type1 formula/array in details.</p>
+<p>type1 formula/array is the most important, fundamental building block of
+<a href="http://xbrlfinapp.pythonanywhere.com/">xbrlfinapp</a>.</p>
+<p>It represent an xbrl element in terms of array.</p>
+<p>To understand this; lets take an example:</p>
+<p>Suppose we want to calculate "Total Assets" and in US GAAP taxonomy its
+id is "us-gaap_Assets". So now we will find this xbrl element in our
+concerned xbrl filling. And if filler has tagged values with this xbrl
+element, then we will fetch that value and will use that value according
+to our need.</p>
+<p>Anyways, This is the easiest part!</p>
+<p>Now hardest part: How to calculate "Total Assets" is filler hasn't
+provided?</p>
+<p>So the solution is: Lets find out its part/components and return the
+total of all and call this total as our "Total Assets".</p>
+<p>This concept has been implemented in type1 array.</p>
+<p>type1 array is considering first element as a primary element and rest
+in the list as a component of it.</p>
+<p>Its algorithm will first search for 1st element of input array in the
+filling.</p>
+<p>If it is there then simply take its values, and move to next elements in
+the list and will add into the values of the first element  if it is not
+the element wise duplicate of first or is not the part or component of
+it according to US GAAP taxonomy(with resolving context, unit, item
+type, balance type).</p>
+<p>And if it is not there; then its algorithm will search for the
+components of "Total Assets", and will sum them all, without any
+repetitions(means if current assets is there and its parts are also
+there; then algorithm will take current assets and forgot its part).
+After this algorithm will move to the next element of input array and
+will do the same for it and its returning value will be added to its
+previous one(with resolving everything: balance type, unit, item type).</p>
+<p>When the iteration is over; type1 array will take the properties of
+first element and assign that to the final result.</p>
+<p>Do you think that at this point our work is over? and we got what we
+have asked for?</p>
+<p>My answer is: No</p>
+<p>Up-to this, we have done nothing for extensions. But type1 array allows
+you to add them. Extensions are not algorithmically checked for part and
+its sub-part. They are filling specific. So you can add them in type1
+array. algorithm will just add if it finds it to the final sum.</p>
+<p>This was the main reason to use id's of xbrl element. Because one
+extension's id will differ from id other filler's. So if it is there
+then it will add in its final sum or will forgot it and move to the
+other element.</p>
+<p>By this way; you can add huge list of elements as formula/array where
+1st element will be the US-GAAP's xbrl element and others are from
+different fillings. If that id is present; then it will added otherwise
+forgot it and more to next element of input array.</p>
+<p>Lets take real life example. I am going to consider
+<a href="http://www.sec.gov/Archives/edgar/data/1142596/000144530513000348/0001445305-13-000348-xbrl.zip">filling</a>
+that we have used in our previous
+<a href="http://namitkewat.wordpress.com/2013/03/11/xbrlfinapp-beta1-0-release/" title="post">post</a>:</p>
+<p>Its "Total Assets" is:</p>
+<p><a href="http://namitkewat.files.wordpress.com/2013/03/array2.jpg"><img alt="array2" src="http://namitkewat.files.wordpress.com/2013/03/array2.jpg" /></a>And
+when we have added multiple elements which are part of Total Assets, in
+that also the result is same as "Total Assets". type1 knows how to avoid
+duplicate and how to avoid sub components.</p>
+<p><a href="http://namitkewat.files.wordpress.com/2013/03/array1.jpg"><img alt="array1" src="http://namitkewat.files.wordpress.com/2013/03/array1.jpg" /></a></p>
+<p>Similarly we can test "Total Assets" and "Liabilities and Stockholders
+Equity's" total. If both are equal then returning total will be zero,
+because one is debit and other is credit and when we represent these two
+as a one; then both will eliminate each other and result will be
+zero.<a href="http://namitkewat.files.wordpress.com/2013/03/array3.jpg"><img alt="array3" src="http://namitkewat.files.wordpress.com/2013/03/array3.jpg" /></a></p>
+<p>In same way; We can find "Debt"
+as:<a href="http://namitkewat.files.wordpress.com/2013/03/array4.jpg"><img alt="array4" src="http://namitkewat.files.wordpress.com/2013/03/array4.jpg" /></a></p>
+<p>Above you can see that the debt's component: short term and long term
+are not present; so will return its components.</p>
+<p>In same way "Revenues" can be find. Here xbrl element for revenues
+"us-gaap_Revenues" is not provided by the filler, so its component are:
+<em>us-gaap_InterestExpense,</em> <em>us-gaap_SalesRevenueNet</em> were filtered by
+the app and its result
+is:<a href="http://namitkewat.files.wordpress.com/2013/03/array5.jpg"><img alt="array5" src="http://namitkewat.files.wordpress.com/2013/03/array5.jpg" /></a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://localhost:8000/tag/type1-xbrlfinapp-formula.html">type1 xbrlfinapp formula</a>
+      <a href="http://localhost:8000/tag/xbrl.html">xbrl</a>
+      <a href="http://localhost:8000/tag/xbrl-analytics.html">xbrl analytics</a>
+      <a href="http://localhost:8000/tag/xbrlfinapp.html">xbrlfinapp</a>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'namitkewatgithubio';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+      <p>&copy; Namit Kewat 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "Powers of type1 Formula at xbrlfinapp",
+  "headline": "Powers of type1 Formula at xbrlfinapp",
+  "datePublished": "2013-03-13 17:23:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "namitkewat",
+    "url": "http://localhost:8000/author/namitkewat.html"
+  },
+  "image": "https://avatars1.githubusercontent.com/u/1215126?v=3&s=460",
+  "url": "http://localhost:8000/powers-of-type1-formula-at-xbrlfinapp.html",
+  "description": "In this post i am going to explain type1 formula/array in details. type1 formula/array is the most important, fundamental building block of xbrlfinapp. It represent an xbrl element in terms of array. To understand this; lets take an example: Suppose we want to calculate "Total Assets" and in ..."
+}
+</script></body>
+</html>
